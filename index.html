@@ -1,0 +1,3489 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Syed Mudaseer Quadri — UI/UX &amp; Product Designer</title>
+  <meta name="description"
+    content="Syed Mudaseer Quadri — UI/UX and product designer with 3+ years of freelance experience and 12 shipped client projects. Open to full-time roles, relocation and remote teams. Case studies, résumé and contact." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;500;700;900&family=Inter:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;500;700;900&family=Inter:wght@400;500;600;700&display=swap" /></noscript>
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23b3272d'/%3E%3Ctext x='32' y='45' font-size='36' text-anchor='middle' fill='%23fff' font-family='serif'%3E%E4%BF%AE%3C/text%3E%3C/svg%3E" />
+  <style>
+    /* ================================================= TOKENS — SUMI-E */
+    :root {
+      --paper: #fbfaf6;
+      /* washi white */
+      --paper-2: #f4f2ea;
+      /* raked-sand panel */
+      --ink: #111110;
+      /* sumi black */
+      --ink-2: #3c3a36;
+      /* diluted ink */
+      --grey: #696660;
+      /* stone grey — keep ≥4.5:1 on --paper/--paper-2 (WCAG AA small text) */
+      --line: rgba(17, 17, 16, 0.16);
+      --line-soft: rgba(17, 17, 16, 0.09);
+      --seal: #b3272d;
+      /* hanko vermilion — accent only */
+      --display: "Zen Old Mincho", "Times New Roman", serif;
+      --body: "Inter", system-ui, sans-serif;
+      --gutter: clamp(20px, 6vw, 110px);
+      --maxw: 1240px;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--body);
+      font-size: 16.5px;
+      line-height: 1.68;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* paper grain */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.5;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.05'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    ::selection {
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    button {
+      font: inherit;
+      background: none;
+      border: 0;
+      cursor: pointer;
+      color: inherit;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--ink);
+      outline-offset: 4px;
+    }
+
+    .wrap {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .kanji {
+      font-family: var(--display);
+      font-weight: 400;
+      color: var(--ink);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--grey);
+    }
+
+    .eyebrow .kanji {
+      font-size: 17px;
+      letter-spacing: 0;
+      color: var(--ink);
+    }
+
+    .eyebrow::after {
+      content: "";
+      width: 46px;
+      height: 1px;
+      background: var(--line);
+    }
+
+    /* brush underline for emphasised words */
+    .brush {
+      position: relative;
+      white-space: nowrap;
+      font-style: normal;
+    }
+
+    .brush::after {
+      content: "";
+      position: absolute;
+      left: -2%;
+      right: -3%;
+      bottom: -0.08em;
+      height: 0.24em;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 16' preserveAspectRatio='none'%3E%3Cpath d='M4 10 C40 4 78 13 118 8 S186 7 196 9' fill='none' stroke='%23111110' stroke-width='6' stroke-linecap='round' opacity='.9'/%3E%3Cpath d='M8 13 C56 9 104 14 158 9' fill='none' stroke='%23111110' stroke-width='2.4' stroke-linecap='round' opacity='.45'/%3E%3C/svg%3E") no-repeat center / 100% 100%;
+      pointer-events: none;
+    }
+
+    /* brush divider between sections */
+    .stroke-div {
+      width: min(320px, 42%);
+      height: 14px;
+      margin: 0 auto;
+      opacity: 0.85;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 14' preserveAspectRatio='none'%3E%3Cpath d='M6 8 C60 3 120 12 180 7 240 3 290 9 314 6' fill='none' stroke='%23111110' stroke-width='3.4' stroke-linecap='round' opacity='.55'/%3E%3Cpath d='M30 11 C110 8 210 12 300 8' fill='none' stroke='%23111110' stroke-width='1.4' stroke-linecap='round' opacity='.3'/%3E%3C/svg%3E") no-repeat center / 100% 100%;
+    }
+
+    /* hanko seal */
+    .hanko {
+      display: inline-grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      background: var(--seal);
+      color: #fff;
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 15px;
+      line-height: 1.05;
+      letter-spacing: 0.04em;
+      border-radius: 7px;
+      transform: rotate(-4deg);
+      box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.28);
+      mix-blend-mode: multiply;
+      text-align: center;
+    }
+
+    /* reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+    }
+
+    .reveal.in {
+      opacity: 1;
+      transform: none;
+    }
+
+    .reveal.d1 {
+      transition-delay: 0.08s;
+    }
+
+    .reveal.d2 {
+      transition-delay: 0.16s;
+    }
+
+    .reveal.d3 {
+      transition-delay: 0.24s;
+    }
+
+    /* ================================================= NAV */
+    .nav {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 60;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 16px var(--gutter);
+      transition: background 0.3s, border-color 0.3s, padding 0.3s;
+      border-bottom: 1px solid transparent;
+    }
+
+    .nav.is-stuck {
+      background: rgba(251, 250, 246, 0.9);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line-soft);
+      padding: 11px var(--gutter);
+    }
+
+    .nav__logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav__logo .hanko {
+      width: 34px;
+      height: 34px;
+      font-size: 12.5px;
+    }
+
+    .nav__logo .name {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: 0.01em;
+    }
+
+    .nav__right {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .nav__link {
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--ink-2);
+      padding: 8px 12px;
+      transition: color 0.25s;
+    }
+
+    .nav__link:hover {
+      color: var(--ink);
+    }
+
+    .nav__cta {
+      margin-left: 8px;
+      font-size: 13.5px;
+      font-weight: 600;
+      padding: 9px 18px;
+      border: 1.5px solid var(--ink);
+      border-radius: 3px;
+      transition: background 0.25s, color 0.25s;
+      white-space: nowrap;
+    }
+
+    .nav__cta:hover {
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    @media (max-width: 720px) {
+      .nav__link {
+        display: none;
+      }
+
+      /* phones: brand + section links move into the hamburger sheet */
+      .nav__logo {
+        display: none;
+      }
+
+      .nav .nav__burger,
+      .menu .nav__burger {
+        display: inline-flex;
+      }
+    }
+
+    /* ================================================= MOBILE MENU */
+    .nav__burger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 44px;
+      height: 44px;
+      padding: 0 11px;
+      background: transparent;
+      border: 1.5px solid var(--ink);
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    .nav__burger span {
+      display: block;
+      height: 2px;
+      background: var(--ink);
+      transition: transform 0.3s var(--ease), opacity 0.2s;
+    }
+
+    .nav__burger[aria-expanded="true"] span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .nav__burger[aria-expanded="true"] span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav__burger[aria-expanded="true"] span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .menu {
+      position: fixed;
+      inset: 0;
+      z-index: 70;
+      display: flex;
+      flex-direction: column;
+      padding: 18px var(--gutter) 32px;
+      background: var(--paper);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-12px);
+      transition: opacity 0.3s var(--ease), transform 0.3s var(--ease), visibility 0s 0.3s;
+    }
+
+    .menu.is-open {
+      opacity: 1;
+      visibility: visible;
+      transform: none;
+      transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
+    }
+
+    .menu__top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--line-soft);
+    }
+
+    .menu__links {
+      display: flex;
+      flex-direction: column;
+      margin-top: 18px;
+    }
+
+    .menu__links a {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      padding: 16px 0;
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 28px;
+      color: var(--ink);
+      border-bottom: 1px solid var(--line-soft);
+    }
+
+    .menu__links a .kanji {
+      font-size: 14px;
+      color: var(--seal);
+      width: 18px;
+    }
+
+    .menu__cta {
+      margin-top: auto;
+      justify-content: center;
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    /* ================================================= HERO */
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 140px var(--gutter) 70px;
+      overflow: hidden;
+    }
+
+    #sumi {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      /* bold black crosshair with a thin paper edge, so it reads on washi and on ink */
+      cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cg fill='none' stroke-linecap='round'%3E%3Cpath d='M16 3v9M16 20v9M3 16h9M20 16h9' stroke='%23fbfaf6' stroke-width='5'/%3E%3Ccircle cx='16' cy='16' r='2.5' fill='%23111110' stroke='%23fbfaf6' stroke-width='2'/%3E%3Cpath d='M16 3v9M16 20v9M3 16h9M20 16h9' stroke='%23111110' stroke-width='2.5'/%3E%3C/g%3E%3C/svg%3E") 16 16, crosshair;
+    }
+
+    .hero.static #sumi {
+      display: none;
+    }
+
+    .hero.static::before {
+      content: "";
+      position: absolute;
+      inset: -20%;
+      z-index: 0;
+      background:
+        repeating-radial-gradient(circle at 72% 34%, transparent 0 54px, rgba(17, 17, 16, 0.07) 54px 57px),
+        repeating-radial-gradient(circle at 18% 78%, transparent 0 70px, rgba(17, 17, 16, 0.05) 70px 73px);
+    }
+
+    /* paper fade at the top so nav links never sit on raw ink */
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 190px;
+      z-index: 1;
+      pointer-events: none;
+      background: linear-gradient(to bottom,
+          rgba(251, 250, 246, 0.97),
+          rgba(251, 250, 246, 0));
+    }
+
+    .hero__inner {
+      position: relative;
+      z-index: 2;
+      max-width: 1060px;
+      pointer-events: none;
+    }
+
+    /* readability scrim: ink must never reach full strength under the copy */
+    .hero__inner::before {
+      content: "";
+      position: absolute;
+      inset: -48px -56px -40px -56px;
+      z-index: -1;
+      background: rgba(251, 250, 246, 0.92);
+      border-radius: 40px;
+      filter: blur(26px);
+    }
+
+    .hero__inner a,
+    .hero__inner .btn {
+      pointer-events: auto;
+    }
+
+    .hero__eyebrow {
+      margin-bottom: 26px;
+    }
+
+    .hero h1 {
+      font-family: var(--display);
+      font-weight: 900;
+      font-size: clamp(40px, 7.6vw, 104px);
+      line-height: 1.04;
+      letter-spacing: -0.015em;
+    }
+
+    .hero h1 .line {
+      display: block;
+    }
+
+    .hero__sub {
+      margin-top: 30px;
+      max-width: 640px;
+      font-size: clamp(15.5px, 1.35vw, 18.5px);
+      color: var(--ink-2);
+    }
+
+    .hero__sub strong {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .hero__cta {
+      margin-top: 38px;
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      font-size: 14.5px;
+      padding: 14px 26px;
+      border-radius: 3px;
+      border: 1.5px solid var(--ink);
+      background: var(--ink);
+      color: var(--paper);
+      transition: transform 0.25s var(--ease), background 0.25s, color 0.25s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn--ghost {
+      background: transparent;
+      color: var(--ink);
+    }
+
+    .btn--ghost:hover {
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    .hero__hint {
+      margin-top: 26px;
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--grey);
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .hero__hint .kanji {
+      font-size: 15px;
+    }
+
+    /* the cursor hint only makes sense when the live canvas is running */
+    .hero.static .hero__hint {
+      display: none;
+    }
+
+    @media (hover: none) and (pointer: coarse) {
+      #sumi {
+        display: none;
+      }
+
+      .hero__hint {
+        display: none;
+      }
+    }
+
+    /* stats strip */
+    .stats {
+      position: relative;
+      z-index: 2;
+      margin-top: clamp(48px, 7vh, 84px);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--line);
+      max-width: 1060px;
+    }
+
+    .stats::before {
+      content: "";
+      position: absolute;
+      inset: -18px -30px -10px -30px;
+      z-index: -1;
+      background: rgba(251, 250, 246, 0.92);
+      border-radius: 24px;
+      filter: blur(20px);
+      pointer-events: none;
+    }
+
+    .stat {
+      padding: 22px 26px 4px 0;
+      border-right: 1px solid var(--line-soft);
+    }
+
+    .stat:last-child {
+      border-right: 0;
+    }
+
+    .stat b {
+      display: block;
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: clamp(24px, 2.6vw, 36px);
+      letter-spacing: -0.01em;
+    }
+
+    .stat span {
+      font-size: 12.5px;
+      color: var(--grey);
+      letter-spacing: 0.02em;
+    }
+
+    @media (max-width: 860px) {
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .stat {
+        padding: 18px 18px 6px 0;
+      }
+    }
+
+    /* ================================================= SECTIONS */
+    .section {
+      position: relative;
+      padding: clamp(80px, 11vw, 150px) var(--gutter);
+    }
+
+    .section--panel {
+      background: var(--paper-2);
+    }
+
+    .section__head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: clamp(38px, 5vw, 64px);
+      flex-wrap: wrap;
+    }
+
+    .section__no {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+    }
+
+    .section__no .kanji {
+      font-size: clamp(34px, 4vw, 52px);
+      font-weight: 400;
+    }
+
+    .section__title {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: clamp(28px, 4.4vw, 54px);
+      line-height: 1.12;
+      letter-spacing: -0.01em;
+    }
+
+    .section__note {
+      max-width: 340px;
+      font-size: 14px;
+      color: var(--grey);
+    }
+
+    /* ================================================= WORK */
+    .proj {
+      display: grid;
+      grid-template-columns: 1fr 1.05fr;
+      gap: clamp(30px, 5vw, 70px);
+      align-items: center;
+    }
+
+    @media (max-width: 940px) {
+      .proj {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .chip {
+      display: inline-block;
+      font-size: 11.5px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-2);
+      border: 1px solid var(--line);
+      padding: 6px 12px;
+      border-radius: 999px;
+      margin: 0 6px 8px 0;
+      background: var(--paper);
+    }
+
+    .proj__name {
+      font-family: var(--display);
+      font-weight: 900;
+      font-size: clamp(34px, 4.6vw, 58px);
+      line-height: 1.05;
+      margin: 10px 0 14px;
+    }
+
+    .proj__tagline {
+      font-size: 17px;
+      color: var(--ink-2);
+      margin-bottom: 14px;
+    }
+
+    .proj__tagline b {
+      color: var(--ink);
+    }
+
+    .proj__desc {
+      font-size: 15px;
+      color: var(--grey);
+      max-width: 520px;
+    }
+
+    .proj__cta {
+      margin-top: 26px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      font-size: 15px;
+      border-bottom: 2px solid var(--ink);
+      padding-bottom: 3px;
+      transition: gap 0.25s var(--ease);
+    }
+
+    .proj__cta:hover {
+      gap: 16px;
+    }
+
+    .proj__ctas {
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .stage {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 4%;
+      padding: 20px 0;
+    }
+
+    .stage::before {
+      /* enso behind the phones */
+      content: "";
+      position: absolute;
+      inset: -6% -4%;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cg fill='none' stroke='%23111110' stroke-linecap='round'%3E%3Cpath d='M100 18 A82 82 0 1 0 168 52' stroke-width='7' opacity='.10'/%3E%3Cpath d='M100 22 A78 78 0 1 0 164 55' stroke-width='3' opacity='.08'/%3E%3C/g%3E%3C/svg%3E") no-repeat center / contain;
+      pointer-events: none;
+    }
+
+    .phone {
+      width: 30%;
+      max-width: 210px;
+      border-radius: 26px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: #fff;
+      box-shadow: 14px 18px 0 -6px rgba(17, 17, 16, 0.08);
+      transition: transform 0.5s var(--ease);
+    }
+
+    .phone--l {
+      transform: rotate(-5deg) translateY(10px);
+    }
+
+    .phone--c {
+      transform: translateY(-8px);
+      z-index: 2;
+      width: 34%;
+      max-width: 236px;
+    }
+
+    .phone--r {
+      transform: rotate(5deg) translateY(12px);
+    }
+
+    .stage:hover .phone--l {
+      transform: rotate(-7deg) translateY(4px);
+    }
+
+    .stage:hover .phone--r {
+      transform: rotate(7deg) translateY(6px);
+    }
+
+    .stage:hover .phone--c {
+      transform: translateY(-16px);
+    }
+
+    /* NDA / client work note */
+    .clientnote {
+      margin-top: clamp(46px, 6vw, 80px);
+      border: 1px dashed var(--line);
+      border-radius: 6px;
+      padding: clamp(22px, 3vw, 34px);
+      display: flex;
+      gap: 22px;
+      align-items: flex-start;
+      background: var(--paper);
+    }
+
+    .clientnote .kanji {
+      font-size: 30px;
+      opacity: 0.85;
+    }
+
+    .clientnote p {
+      font-size: 15px;
+      color: var(--ink-2);
+      max-width: 760px;
+    }
+
+    .clientnote a {
+      font-weight: 600;
+      border-bottom: 1.5px solid var(--ink);
+    }
+
+    .contact .clientnote {
+      margin-top: 28px;
+      max-width: 760px;
+    }
+
+    /* ================================================= CASE STUDY */
+    .cs {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .cs__hero {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 36px 0 8px;
+      box-shadow: 18px 22px 0 -8px rgba(17, 17, 16, 0.07);
+    }
+
+    .cs__lead {
+      font-size: clamp(17px, 1.6vw, 20px);
+      color: var(--ink-2);
+      max-width: 720px;
+      margin-top: 14px;
+    }
+
+    .cs__lead b {
+      color: var(--ink);
+    }
+
+    .cs__video {
+      margin-top: 30px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .cs__video-note {
+      font-size: 13px;
+      color: var(--grey);
+      max-width: 360px;
+    }
+
+    .beats {
+      margin-top: clamp(44px, 6vw, 70px);
+      display: grid;
+      gap: clamp(40px, 5vw, 60px);
+    }
+
+    .beat {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: clamp(18px, 3vw, 40px);
+    }
+
+    @media (max-width: 700px) {
+      .beat {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+    }
+
+    .beat__no {
+      font-family: var(--display);
+      font-size: 34px;
+      font-weight: 400;
+      line-height: 1;
+    }
+
+    .beat__no small {
+      display: block;
+      font-family: var(--body);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--grey);
+      margin-top: 10px;
+    }
+
+    .beat__title {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: clamp(21px, 2.4vw, 28px);
+      line-height: 1.25;
+      margin-bottom: 12px;
+    }
+
+    .beat__body p {
+      font-size: 15.5px;
+      color: var(--ink-2);
+      margin-bottom: 12px;
+      max-width: 660px;
+    }
+
+    .beat__body strong {
+      color: var(--ink);
+    }
+
+    .hl {
+      background: linear-gradient(transparent 62%, rgba(17, 17, 16, 0.14) 62%);
+      color: var(--ink);
+    }
+
+    .signal {
+      margin-top: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: clamp(18px, 2.6vw, 28px);
+      background: var(--paper);
+    }
+
+    .signal__h {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 17px;
+      margin-bottom: 6px;
+    }
+
+    .signal__sub {
+      font-size: 13.5px;
+      color: var(--grey);
+      margin-bottom: 18px;
+      max-width: 620px;
+    }
+
+    .signal__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    @media (max-width: 700px) {
+      .signal__grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .shot {
+      border: 1px solid var(--line-soft);
+      border-radius: 6px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .shot img {
+      filter: grayscale(1) contrast(1.04);
+    }
+
+    .shot figcaption {
+      font-size: 12.5px;
+      color: var(--grey);
+      padding: 10px 12px;
+      border-top: 1px solid var(--line-soft);
+    }
+
+    .shot figcaption b {
+      color: var(--ink);
+      font-family: var(--display);
+      font-size: 15px;
+      margin-right: 6px;
+    }
+
+    .outcome {
+      margin-top: clamp(44px, 6vw, 64px);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--line);
+    }
+
+    @media (max-width: 700px) {
+      .outcome {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .outcome div {
+      padding: 22px 22px 0 0;
+    }
+
+    .outcome b {
+      display: block;
+      font-family: var(--display);
+      font-size: clamp(22px, 2.4vw, 30px);
+      font-weight: 700;
+    }
+
+    .outcome span {
+      font-size: 13px;
+      color: var(--grey);
+    }
+
+    .gallery {
+      margin-top: clamp(46px, 6vw, 70px);
+      display: grid;
+      gap: 22px;
+    }
+
+    .gallery__h {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--grey);
+    }
+
+    .gallery__row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    @media (max-width: 700px) {
+      .gallery__row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .scene {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .scene__cap {
+      display: flex;
+      gap: 12px;
+      align-items: baseline;
+      padding: 12px 16px;
+      border-top: 1px solid var(--line-soft);
+      font-size: 13px;
+      color: var(--grey);
+    }
+
+    .scene__cap b {
+      font-family: var(--display);
+      font-size: 15.5px;
+      color: var(--ink);
+    }
+
+
+
+    /* ================================================= T VASTRA (2nd project) */
+    .proj + .proj {
+      margin-top: clamp(70px, 9vw, 120px);
+    }
+
+    @media (min-width: 941px) {
+      .proj--flip .stage {
+        order: -1;
+      }
+    }
+
+    .stage--dark .phone {
+      background: #0a0a0a;
+    }
+
+    .cs__links {
+      margin-top: 26px;
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .frames,
+    .duo figure,
+    .solo {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      background: #0d0d0d;
+    }
+
+    .frames {
+      margin-top: 22px;
+    }
+
+    .frames figcaption,
+    .duo figcaption,
+    .solo figcaption {
+      background: var(--paper);
+      border-top: 1px solid var(--line-soft);
+      padding: 10px 14px;
+      font-size: 12.5px;
+      color: var(--grey);
+    }
+
+    .frames figcaption b,
+    .duo figcaption b,
+    .solo figcaption b {
+      font-family: var(--display);
+      font-size: 15px;
+      color: var(--ink);
+      margin-right: 6px;
+    }
+
+    .duo {
+      margin-top: 22px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+
+    @media (max-width: 700px) {
+      .duo {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .solo {
+      margin-top: 14px;
+      max-width: 460px;
+    }
+
+    .fixes {
+      margin-top: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: clamp(18px, 2.6vw, 28px);
+      background: var(--paper);
+    }
+
+    .fixes__h {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 17px;
+      margin-bottom: 6px;
+    }
+
+    .fixes__sub {
+      font-size: 13.5px;
+      color: var(--grey);
+      margin-bottom: 16px;
+      max-width: 620px;
+    }
+
+    .fixes ol {
+      padding-left: 22px;
+      display: grid;
+      gap: 9px;
+      font-size: 14px;
+      color: var(--ink-2);
+    }
+
+    .fixes li b {
+      color: var(--ink);
+    }
+
+    .scene--dark {
+      background: #0a0a0a;
+    }
+
+    .scene .stage {
+      padding: clamp(24px, 4vw, 44px) 0;
+    }
+
+    /* ================================================= VIDEO PLAYER */
+    .player {
+      margin-top: clamp(46px, 6vw, 70px);
+    }
+
+    .player__h {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--grey);
+      display: block;
+      margin-bottom: 14px;
+    }
+
+    .player__frame {
+      position: relative;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      background: #0d0d0c;
+      box-shadow: 18px 22px 0 -8px rgba(17, 17, 16, 0.07);
+      cursor: pointer;
+    }
+
+    .player__frame video {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .player__big {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      background: rgba(17, 17, 16, 0.24);
+      transition: opacity 0.3s, visibility 0.3s;
+    }
+
+    .player__frame.is-playing .player__big {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .player__big span {
+      width: 84px;
+      height: 84px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--paper);
+      color: var(--ink);
+      border: 1.5px solid var(--ink);
+      font-size: 26px;
+      transition: transform 0.3s var(--ease);
+    }
+
+    .player__frame:hover .player__big span {
+      transform: scale(1.07);
+    }
+
+    .player__bar {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      background: linear-gradient(transparent, rgba(13, 13, 12, 0.72));
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .player__frame:hover .player__bar,
+    .player__frame.is-playing .player__bar {
+      opacity: 1;
+    }
+
+    .player__btn {
+      color: #fbfaf6;
+      font-size: 15px;
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+    }
+
+    .player__track {
+      position: relative;
+      flex: 1;
+      height: 4px;
+      background: rgba(251, 250, 246, 0.28);
+      border-radius: 2px;
+      cursor: pointer;
+    }
+
+    .player__fill {
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 0%;
+      background: #fbfaf6;
+      border-radius: 2px;
+    }
+
+    .player__time {
+      font-size: 11.5px;
+      color: rgba(251, 250, 246, 0.85);
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0.04em;
+    }
+
+    .player__note {
+      margin-top: 12px;
+      font-size: 12.5px;
+      color: var(--grey);
+    }
+
+    /* ================================================= HIRE ME */
+    .pitch {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    @media (max-width: 860px) {
+      .pitch {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+      padding: clamp(22px, 3vw, 32px);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 12px 14px 0 -6px rgba(17, 17, 16, 0.08);
+    }
+
+    .card .kanji {
+      font-size: 26px;
+      display: block;
+      margin-bottom: 14px;
+    }
+
+    .card h3 {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 20px;
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .card p {
+      font-size: 14.5px;
+      color: var(--ink-2);
+    }
+
+    .card p b {
+      color: var(--ink);
+    }
+
+    .why {
+      margin-top: clamp(40px, 5vw, 60px);
+      display: grid;
+      grid-template-columns: 0.9fr 1.4fr;
+      gap: clamp(24px, 4vw, 60px);
+      align-items: start;
+      border-top: 1px solid var(--line);
+      padding-top: clamp(28px, 4vw, 44px);
+    }
+
+    @media (max-width: 860px) {
+      .why {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .why h3 {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: clamp(22px, 2.6vw, 30px);
+      line-height: 1.25;
+    }
+
+    .why p {
+      font-size: 15.5px;
+      color: var(--ink-2);
+      margin-bottom: 12px;
+    }
+
+    .why p b {
+      color: var(--ink);
+    }
+
+    /* ================================================= PROCESS */
+    .principles {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    @media (max-width: 1100px) {
+      .principles {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 860px) {
+      .principles {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .principle {
+      border-top: 2px solid var(--ink);
+      padding-top: 20px;
+    }
+
+    .principle .n {
+      font-family: var(--display);
+      font-size: 26px;
+    }
+
+    .principle h3 {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 20px;
+      margin: 10px 0 8px;
+    }
+
+    .principle p {
+      font-size: 14.5px;
+      color: var(--ink-2);
+    }
+
+    .toolkit {
+      margin-top: clamp(36px, 5vw, 54px);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tag {
+      font-size: 13px;
+      font-weight: 500;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 8px 16px;
+      background: var(--paper);
+      color: var(--ink-2);
+    }
+
+    /* ================================================= PROMISES */
+    .promises {
+      margin-top: 26px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .promise {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--ink);
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 8px 16px 8px 12px;
+    }
+
+    .promise::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--seal);
+      flex: none;
+    }
+
+    .promise--seal {
+      color: var(--paper);
+      background: var(--seal);
+      border-color: var(--seal);
+    }
+
+    .promise--seal::before {
+      background: var(--paper);
+    }
+
+    /* ================================================= ABOUT */
+    .about {
+      display: grid;
+      grid-template-columns: 0.8fr 1.5fr;
+      gap: clamp(28px, 5vw, 70px);
+      align-items: start;
+    }
+
+    @media (max-width: 860px) {
+      .about {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .about__photo {
+      position: relative;
+    }
+
+    .about__photo img {
+      border-radius: 6px;
+      filter: grayscale(1) contrast(1.05);
+      border: 1px solid var(--line);
+      box-shadow: 16px 18px 0 -6px rgba(17, 17, 16, 0.09);
+    }
+
+    .about__photo .hanko {
+      position: absolute;
+      right: -12px;
+      bottom: -12px;
+      mix-blend-mode: normal;
+      z-index: 2;
+      box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.28), 0 2px 10px rgba(17, 17, 16, 0.18);
+    }
+
+    .about__media {
+      display: grid;
+      gap: 26px;
+      align-content: start;
+    }
+
+    .about__cert {
+      margin: 0;
+    }
+
+    .about__cert img {
+      border-radius: 6px;
+      filter: grayscale(1) contrast(1.03);
+      border: 1px solid var(--line);
+      box-shadow: 10px 12px 0 -6px rgba(17, 17, 16, 0.09);
+      transition: filter 0.35s ease;
+    }
+
+    .about__cert:hover img {
+      filter: none;
+    }
+
+    .about__cert figcaption {
+      margin-top: 10px;
+      font-size: 12.5px;
+      letter-spacing: 0.02em;
+      color: var(--ink-2);
+    }
+
+    .about h3 {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: clamp(24px, 3vw, 34px);
+      line-height: 1.22;
+      margin-bottom: 18px;
+    }
+
+    .about p {
+      font-size: 15.5px;
+      color: var(--ink-2);
+      margin-bottom: 14px;
+      max-width: 640px;
+    }
+
+    .about p b {
+      color: var(--ink);
+    }
+
+    .facts {
+      margin-top: 26px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0;
+      border-top: 1px solid var(--line);
+    }
+
+    @media (max-width: 560px) {
+      .facts {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .fact {
+      padding: 14px 16px 14px 0;
+      border-bottom: 1px solid var(--line-soft);
+      font-size: 14px;
+    }
+
+    .fact span {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--grey);
+      margin-bottom: 4px;
+    }
+
+    .fact b {
+      font-weight: 600;
+    }
+
+    /* ================================================= CONTACT */
+    .contact {
+      text-align: left;
+    }
+
+    .contact h2 {
+      font-family: var(--display);
+      font-weight: 900;
+      font-size: clamp(34px, 6vw, 76px);
+      line-height: 1.08;
+      letter-spacing: -0.015em;
+      margin: 18px 0 20px;
+      max-width: 900px;
+      text-wrap: balance;
+    }
+
+    .contact h2 a {
+      border-bottom: 4px solid var(--ink);
+      transition: background 0.25s, color 0.25s;
+    }
+
+    .contact h2 a:hover {
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    .contact__sub {
+      color: var(--ink-2);
+      max-width: 560px;
+      font-size: 16px;
+    }
+
+    /* ---- let's work together form */
+    .lwt {
+      margin-top: 40px;
+      max-width: 760px;
+      display: grid;
+      gap: 18px;
+      padding: clamp(22px, 4vw, 40px);
+      background: var(--paper-2);
+      border: 1px solid var(--line);
+      border-top: 3px solid var(--seal);
+      border-radius: 4px;
+    }
+
+    .lwt__head h3 {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: clamp(24px, 3vw, 32px);
+    }
+
+    .lwt__head p {
+      margin-top: 6px;
+      color: var(--ink-2);
+      font-size: 15px;
+    }
+
+    .lwt__row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    @media (max-width: 600px) {
+      .lwt__row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .lwt__field {
+      display: grid;
+      gap: 8px;
+    }
+
+    .lwt__field span {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .lwt__field input,
+    .lwt__field textarea {
+      font: inherit;
+      font-size: 15px;
+      color: var(--ink);
+      background: var(--paper);
+      border: 1.5px solid var(--line);
+      border-radius: 3px;
+      padding: 12px 14px;
+      width: 100%;
+      transition: border-color 0.2s;
+    }
+
+    .lwt__field textarea {
+      resize: vertical;
+      min-height: 130px;
+    }
+
+    .lwt__field input::placeholder,
+    .lwt__field textarea::placeholder {
+      color: var(--grey);
+    }
+
+    .lwt__field input:focus,
+    .lwt__field textarea:focus {
+      outline: none;
+      border-color: var(--ink);
+    }
+
+    .lwt__foot {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .lwt__foot .btn {
+      cursor: pointer;
+    }
+
+    .lwt__foot .btn[disabled] {
+      opacity: 0.6;
+      cursor: progress;
+    }
+
+    .lwt__status {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink-2);
+    }
+
+    .lwt__status.is-ok {
+      color: #2f6b3a;
+    }
+
+    .lwt__status.is-err {
+      color: var(--seal);
+    }
+
+    .lwt__trap {
+      position: absolute;
+      left: -9999px;
+    }
+
+    .socials {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 34px;
+    }
+
+    .social {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 12px 22px;
+      border: 1.5px solid var(--ink);
+      border-radius: 3px;
+      transition: background 0.25s, color 0.25s, transform 0.25s var(--ease);
+    }
+
+    .social:hover {
+      background: var(--ink);
+      color: var(--paper);
+      transform: translateY(-2px);
+    }
+
+    .social svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
+
+    .foot {
+      margin-top: clamp(50px, 7vw, 90px);
+      padding-top: 22px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+      font-size: 13px;
+      color: var(--grey);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+
+      html {
+        scroll-behavior: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ============================ NAV ============================ -->
+  <header class="nav" id="nav">
+    <button class="nav__burger" type="button" aria-label="Open menu" aria-expanded="false"
+      aria-controls="menu"><span></span><span></span><span></span></button>
+    <a class="nav__logo" href="#top" aria-label="Syed Mudaseer, home">
+      <span class="hanko" aria-hidden="true">修</span>
+      <span class="name">Syed Mudaseer</span>
+    </a>
+    <nav class="nav__right" aria-label="Primary">
+      <a class="nav__link" href="#work">Work</a>
+      <a class="nav__link" href="#hire">Why hire me</a>
+      <a class="nav__link" href="#process">How I work</a>
+      <a class="nav__link" href="#about">About</a>
+      <a class="nav__cta" href="Syed-Mudaseer-Quadri-UIUX-Resume.pdf" target="_blank" rel="noopener">Résumé (PDF) ↓</a>
+    </nav>
+  </header>
+
+  <!-- ============================ MOBILE MENU ============================ -->
+  <div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Menu">
+    <div class="menu__top">
+      <a class="nav__logo" style="display:inline-flex" href="#top" aria-label="Syed Mudaseer — home">
+        <span class="hanko" aria-hidden="true">修</span>
+        <span class="name">Syed Mudaseer</span>
+      </a>
+      <button class="nav__burger" type="button" aria-label="Close menu" aria-expanded="true"
+        aria-controls="menu"><span></span><span></span><span></span></button>
+    </div>
+    <nav class="menu__links" aria-label="Sections">
+      <a href="#work"><span class="kanji" aria-hidden="true">一</span>Work</a>
+      <a href="#hire"><span class="kanji" aria-hidden="true">二</span>Why hire me</a>
+      <a href="#process"><span class="kanji" aria-hidden="true">三</span>How I work</a>
+      <a href="#about"><span class="kanji" aria-hidden="true">四</span>About</a>
+      <a href="#contact"><span class="kanji" aria-hidden="true">縁</span>Contact</a>
+    </nav>
+    <a class="btn menu__cta" href="Syed-Mudaseer-Quadri-UIUX-Resume.pdf" target="_blank" rel="noopener">Résumé (PDF) ↓</a>
+  </div>
+
+  <main id="top">
+    <!-- ============================ HERO ============================ -->
+    <section class="hero" id="hero">
+      <canvas id="sumi" aria-hidden="true"></canvas>
+      <div class="hero__inner">
+        <div class="hero__eyebrow reveal in">
+          <span class="eyebrow"><span class="kanji" aria-hidden="true">墨</span> UI/UX &amp;
+            Product Designer · Open to full-time roles worldwide</span>
+        </div>
+        <h1>
+          <span class="line reveal in">I design products</span>
+          <span class="line reveal in d1">people keep</span>
+          <span class="line reveal in d2"><em class="brush">coming back to.</em></span>
+        </h1>
+        <p class="hero__sub reveal in d2">
+          I'm <strong>Syed Mudaseer</strong>, a UI/UX and product designer
+          looking for my next <strong>full-time role</strong>. For three years
+          I've been the only designer on 12 freelance client projects, from
+          SaaS dashboards to e-commerce and marketing sites, owning research,
+          user flows, hi-fi UI in Figma, design systems and developer handoff.
+          I'm open to relocating and to remote teams.
+        </p>
+        <div class="promises reveal in d3" aria-label="Availability">
+          <span class="promise promise--seal">Open to relocation</span>
+          <span class="promise">Remote-ready</span>
+          <span class="promise">Available immediately</span>
+          <span class="promise">Reply within 24 hours</span>
+        </div>
+        <div class="hero__cta reveal in d3">
+          <a class="btn" href="Syed-Mudaseer-Quadri-UIUX-Resume.pdf" target="_blank" rel="noopener">Download my résumé ↓</a>
+          <a class="btn btn--ghost" href="#work">See my work ↓</a>
+        </div>
+        <p class="hero__hint reveal in d3">
+          <span class="kanji" aria-hidden="true">墨流し</span> Suminagashi —
+          move your cursor to stir the ink · click to drop a ring
+        </p>
+      </div>
+
+      <div class="stats">
+        <div class="stat reveal in d1"><b>3+</b><span>years of freelance product design</span></div>
+        <div class="stat reveal in d2"><b>12</b><span>projects shipped, end to end</span></div>
+        <div class="stat reveal in d2"><b>80%</b><span>of clients returned or referred me</span></div>
+        <div class="stat reveal in d3"><b>100%</b><span>on-time delivery record</span></div>
+      </div>
+    </section>
+
+    <!-- ============================ WORK ============================ -->
+    <section class="section" id="work">
+      <div class="wrap">
+        <div class="section__head reveal">
+          <div class="section__no">
+            <span class="kanji" aria-hidden="true">一</span>
+            <h2 class="section__title">Selected work</h2>
+          </div>
+          <p class="section__note">
+            Three case studies I designed and built end to end: my own reading
+            app and two client projects, a store and a gym app. Behind them,
+            three years of freelance client work, most of it under NDA.
+          </p>
+        </div>
+
+        <article class="proj reveal">
+          <div class="proj__info">
+            <div>
+              <span class="chip">Case study</span>
+              <span class="chip">Mobile app · 2025–26</span>
+              <span class="chip">Solo — research → design → build</span>
+            </div>
+            <h3 class="proj__name">Daily Recall</h3>
+            <p class="proj__tagline">
+              Scan a page you read and the app turns it into
+              <b>a summary, a word game and spaced flashcards</b> — so the
+              idea survives past the highlight.
+            </p>
+            <p class="proj__desc">
+              A reading-retention app for people who highlight everything and
+              remember nothing. I designed the capture → insight → recall
+              loop, then rebuilt it as a working app and tested it on the same
+              people I'd interviewed.
+            </p>
+            <div class="proj__ctas">
+              <a class="proj__cta" href="#case">Read the case study <span aria-hidden="true">→</span></a>
+              <a class="proj__cta" href="https://youtu.be/kFwENWljtbI" target="_blank" rel="noopener">Watch the video
+                <span aria-hidden="true">▶</span></a>
+            </div>
+          </div>
+          <div class="stage" aria-hidden="false">
+            <div class="phone phone--l"><img decoding="async" width="560" height="1169"
+                src="img/daily-recall-ai-insights-screen-3a75570c.webp"
+                alt="Daily Recall — AI insights screen" loading="lazy" /></div>
+            <div class="phone phone--c"><img decoding="async" width="560" height="1169"
+                src="img/daily-recall-home-screen-9ee2f76d.webp"
+                alt="Daily Recall — home screen" loading="lazy" /></div>
+            <div class="phone phone--r"><img decoding="async" width="560" height="1169"
+                src="img/daily-recall-flashcard-review-0d1d0a78.webp"
+                alt="Daily Recall — flashcard review" loading="lazy" /></div>
+          </div>
+        </article>
+
+        <article class="proj proj--flip reveal">
+          <div class="proj__info">
+            <div>
+              <span class="chip">Case study</span>
+              <span class="chip">E-commerce web · 2026</span>
+              <span class="chip">Client project · direction → UX → build</span>
+            </div>
+            <h3 class="proj__name">T Vastra</h3>
+            <p class="proj__tagline">
+              A black, premium storefront for an Indian embroidered-tee label,
+              where <b>picking a colour spreads over the shirt like a symbiote</b>.
+            </p>
+            <p class="proj__desc">
+              Designed around one signature interaction and a product card
+              where every tap answers back. Shipped as a working store,
+              reviewed by a second AI system and tested in a real browser
+              before handover.
+            </p>
+            <div class="proj__ctas">
+              <a class="proj__cta" href="#case-tvastra">Read the case study <span aria-hidden="true">→</span></a>
+              <a class="proj__cta" href="mailto:syed.designuiux@gmail.com?subject=T%20Vastra%20demo%20request">Request a demo
+                <span aria-hidden="true">✉</span></a>
+              <a class="proj__cta" href="#contact">Let’s connect <span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+          <div class="stage stage--dark" aria-hidden="false">
+            <div class="phone phone--l"><img decoding="async" width="560" height="1212"
+                src="img/t-vastra-on-mobile-hero-with-647d9a18.webp"
+                alt="T Vastra on mobile: hero with the colour picker" loading="lazy" /></div>
+            <div class="phone phone--c"><img decoding="async" width="560" height="1212"
+                src="img/t-vastra-on-mobile-product-card-7355c27f.webp"
+                alt="T Vastra on mobile: product card in lavender" loading="lazy" /></div>
+            <div class="phone phone--r"><img decoding="async" width="560" height="1212"
+                src="img/t-vastra-on-mobile-the-bag-7c41dd23.webp"
+                alt="T Vastra on mobile: the bag drawer" loading="lazy" /></div>
+          </div>
+        </article>
+
+        <article class="proj reveal">
+          <div class="proj__info">
+            <div>
+              <span class="chip">Case study</span>
+              <span class="chip">Mobile app · 2026</span>
+              <span class="chip">Client project · design system → UX → build</span>
+            </div>
+            <h3 class="proj__name">Tone Zone Fitness</h3>
+            <p class="proj__tagline">
+              A gym app where members <b>show one QR pass at the door</b> and
+              the owner sees who's in and who's paid, from the same phone.
+            </p>
+            <p class="proj__desc">
+              Two apps in one: a member side for the pass and UPI payments,
+              and a hidden owner side for check-ins, approvals and the monthly
+              money. Designed around zero running fees, then built in Flutter
+              for iOS and Android from one codebase.
+            </p>
+            <div class="proj__ctas">
+              <a class="proj__cta" href="#case-tonezone">Read the case study <span aria-hidden="true">→</span></a>
+              <a class="proj__cta" href="#contact">Let’s connect <span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+          <div class="stage stage--dark" aria-hidden="false">
+            <div class="phone phone--l"><img decoding="async" width="560" height="1212"
+                src="img/tone-zone-membership-pass.webp"
+                alt="Tone Zone member app: membership pass with QR code" loading="lazy" /></div>
+            <div class="phone phone--c"><img decoding="async" width="560" height="1212"
+                src="img/tone-zone-check-in-card.webp"
+                alt="Tone Zone owner app: check-in card after scanning a member, showing Allow entry" loading="lazy" /></div>
+            <div class="phone phone--r"><img decoding="async" width="560" height="1212"
+                src="img/tone-zone-owner-dashboard.webp"
+                alt="Tone Zone owner app: dashboard with monthly revenue and unpaid members" loading="lazy" /></div>
+          </div>
+        </article>
+
+        <div class="clientnote reveal">
+          <span class="kanji" aria-hidden="true">縁</span>
+          <p>
+            <b>Client work (2023–2026).</b> Twelve freelance projects across
+            SaaS dashboards, e-commerce and marketing sites — most protected
+            by NDAs, so they don't live on a public page. I'm happy to walk
+            your team through more of my work on a call:
+            <a href="mailto:syed.designuiux@gmail.com?subject=Portfolio%20walkthrough%20request">just ask</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ CASE STUDY ============================ -->
+    <section class="section section--panel" id="case">
+      <div class="wrap">
+        <div class="cs">
+          <div class="reveal">
+            <span class="chip">Reading retention</span>
+            <span class="chip">9 user interviews · 2 iteration cycles</span>
+          </div>
+          <h2 class="section__title reveal" style="margin-top: 14px">
+            Turning a page you read<br />into something you
+            <em class="brush">keep.</em>
+          </h2>
+          <p class="cs__lead reveal">
+            Daily Recall scans a page from a book and turns it into a
+            <b>summary, a word game and spaced flashcards</b> — closing the
+            gap between highlighting something and actually remembering it.
+          </p>
+          <div class="cs__video reveal">
+            <a class="btn" href="https://youtu.be/kFwENWljtbI" target="_blank" rel="noopener">▶&nbsp; Watch the
+              case-study video</a>
+            <span class="cs__video-note">The full walkthrough on YouTube — the research, the decisions, and the working
+              build in motion.</span>
+          </div>
+
+          <figure class="cs__hero reveal">
+            <img decoding="async" width="1280" height="1213"
+              src="img/daily-recall-home-and-review-screens-c6fc9136.webp"
+              alt="Daily Recall — home and review screens" loading="lazy" />
+          </figure>
+
+          <div class="beats">
+            <div class="beat reveal">
+              <div class="beat__no">壱<small>The signal</small></div>
+              <div>
+                <h3 class="beat__title">A personal annoyance that turned out to be everyone's</h3>
+                <div class="beat__body">
+                  <p>
+                    It started the way a lot of usable products do — with a
+                    problem I was living. My reading habit was leaking; I'd
+                    finish a book and keep almost none of it. Before designing
+                    anything, I checked whether the pain was mine alone.
+                  </p>
+                  <p>
+                    <span class="hl">Those view counts weren't opinions — they were a crowd quietly raising their
+                      hands.</span>
+                    The same question, asked by millions, across unrelated
+                    creators. My private frustration was a widespread,
+                    under-served need. That was the green light.
+                  </p>
+                </div>
+                <figure class="signal">
+                  <div class="signal__h">Research — the demand was already loud</div>
+                  <p class="signal__sub">
+                    One question — "how do I remember what I read?" — pulling
+                    17M+ combined views across unrelated channels.
+                  </p>
+                  <div class="signal__grid">
+                    <figure class="shot">
+                      <img decoding="async" width="860" height="235"
+                        src="img/youtube-video-how-i-remember-everything-b738e3bd.webp"
+                        alt="YouTube video: How I Remember Everything I Read" loading="lazy" />
+                      <figcaption><b>3.2M</b> the question, asked once</figcaption>
+                    </figure>
+                    <figure class="shot">
+                      <img decoding="async" width="860" height="243"
+                        src="img/youtube-video-how-to-remember-everything-0ba9b4e5.webp"
+                        alt="YouTube video: How to Remember Everything You Read" loading="lazy" />
+                      <figcaption><b>9.6M</b> same question, different creator</figcaption>
+                    </figure>
+                    <figure class="shot">
+                      <img decoding="async" width="860" height="239"
+                        src="img/youtube-video-how-to-remember-everything-ee353809.webp"
+                        alt="YouTube video: How to Remember Everything You Read" loading="lazy" />
+                      <figcaption><b>5.1M</b> and again, and again</figcaption>
+                    </figure>
+                  </div>
+                </figure>
+              </div>
+            </div>
+
+            <div class="beat reveal">
+              <div class="beat__no">弐<small>The incumbent</small></div>
+              <div>
+                <h3 class="beat__title">The existing tool didn't earn the effort it asked for</h3>
+                <div class="beat__body">
+                  <p>
+                    Someone had tried to solve this — I found Readwise and
+                    genuinely wanted it to be the answer. The value was there
+                    in theory, but the experience cost more than it returned.
+                    Rather than trust my own reaction, I
+                    <strong>interviewed nine people from the target audience</strong>.
+                  </p>
+                  <p>
+                    The complaints clustered: a flow that felt heavier than
+                    the payoff justified. I stopped guessing and
+                    <strong>documented every friction point</strong> users hit
+                    as they moved through it. That list became my brief.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="beat reveal">
+              <div class="beat__no">参<small>The advantage</small></div>
+              <div>
+                <h3 class="beat__title">I didn't let the design die as a clickable prototype</h3>
+                <div class="beat__body">
+                  <p>
+                    Instead of handing over a static mockup and waiting,
+                    <span class="hl">I designed the app and then rebuilt it as a functioning one</span>
+                    — not a mockup pretending to work, but something I could
+                    put in a hand and watch get used.
+                  </p>
+                  <p>
+                    That changed my feedback loop entirely. People stopped
+                    imagining how a flow would feel and started tapping
+                    through it — failing and succeeding at the exact friction
+                    points I'd catalogued.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="beat reveal">
+              <div class="beat__no">四<small>The iteration</small></div>
+              <div>
+                <h3 class="beat__title">Two full cycles — the surviving version, not a lucky guess</h3>
+                <div class="beat__body">
+                  <p>
+                    I re-interviewed, redesigned, re-interviewed and
+                    redesigned again — two complete cycles, each grounded in
+                    watching real behaviour rather than my own taste. The
+                    capture flow got simpler; the recall surface got tuned
+                    until reviewing felt lighter than the reading it came
+                    from.
+                  </p>
+                  <p>
+                    <strong>The final design wasn't my first idea. It was what was left after the weak ones got tested
+                      out.</strong>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="beat reveal">
+              <div class="beat__no">五<small>The takeaway</small></div>
+              <div>
+                <h3 class="beat__title">The pixels were never the job</h3>
+                <div class="beat__body">
+                  <p>
+                    The design file stayed the source of truth and I stayed
+                    the design authority — <span class="hl">AI was just a faster brush.</span>
+                    The real job was noticing a genuine pain, proving the
+                    demand behind it, refusing a tool that didn't deserve its
+                    users, and iterating against real reactions until the
+                    product fit. That's the same loop I run on client work —
+                    and the one I'd bring to your team.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="outcome reveal">
+            <div><b>2 cycles</b><span>of interview → redesign, grounded in observed behaviour</span></div>
+            <div><b>9 interviews</b><span>with the exact audience the incumbent was failing</span></div>
+            <div><b>3-part recall</b><span>summary · word game · spaced flashcards from one scan</span></div>
+          </div>
+
+          <div class="gallery">
+            <span class="gallery__h reveal">Selected screens</span>
+            <figure class="scene reveal">
+              <img decoding="async" width="1280" height="1213"
+                src="img/selected-text-turned-into-ai-insights-d4fb1509.webp"
+                alt="Selected text turned into AI insights" loading="lazy" />
+              <figcaption class="scene__cap"><b>Highlight → insight</b><span>Enhance a passage into a summary, word game
+                  &amp; flashcards</span></figcaption>
+            </figure>
+            <div class="gallery__row">
+              <figure class="scene reveal">
+                <img decoding="async" width="560" height="1169"
+                  src="img/daily-recall-home-screen-9ee2f76d.webp"
+                  alt="Home and library" loading="lazy" />
+                <figcaption class="scene__cap"><b>Capture &amp; library</b><span>Search highlights, books,
+                    insights</span></figcaption>
+              </figure>
+              <figure class="scene reveal">
+                <img decoding="async" width="560" height="1169"
+                  src="img/daily-recall-flashcard-review-0d1d0a78.webp"
+                  alt="Flashcard review" loading="lazy" />
+                <figcaption class="scene__cap"><b>Daily review</b><span>Short, finishable recall sessions</span>
+                </figcaption>
+              </figure>
+            </div>
+            <figure class="scene reveal">
+              <img decoding="async" width="1280" height="1213"
+                src="img/daily-review-complete-and-a-flashcard-0147af66.webp"
+                alt="Daily review complete and a flashcard" loading="lazy" />
+              <figcaption class="scene__cap"><b>The recall loop</b><span>Finish a session, come back tomorrow</span>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+      </div>
+    </section>
+
+    <!-- ============================ CASE STUDY: T VASTRA ============================ -->
+    <section class="section" id="case-tvastra" style="border-bottom: 1px solid var(--line-soft)">
+      <div class="wrap">
+        <div class="cs">
+          <div class="reveal">
+            <span class="chip">Client project · e-commerce</span>
+            <span class="chip">12 products · 16 colourways · private demo</span>
+          </div>
+          <h2 class="section__title reveal" style="margin-top: 14px">
+            A colour change that spreads<br />like a <em class="brush">symbiote.</em>
+          </h2>
+          <p class="cs__lead reveal">
+            T Vastra makes embroidered, oversized tees and sells them through
+            Instagram. They wanted a <b>black, premium online store with good
+            type and micro-animations on the product cards</b>. I directed and
+            designed it, then built it as a working store with AI as the
+            brush: Claude Code for the build, OpenAI Codex as an independent
+            reviewer. The venom idea, the critique and every keep-or-cut call
+            were mine.
+          </p>
+          <div class="cs__links reveal">
+            <a class="btn" href="mailto:syed.designuiux@gmail.com?subject=T%20Vastra%20demo%20request">Request a demo walkthrough</a>
+            <a class="btn btn--ghost" href="#contact">Let’s connect →</a>
+            <span class="cs__video-note">The working store is private to the client. Ask and I'll walk you through it live, venom effect included.</span>
+          </div>
+
+          <figure class="cs__hero reveal">
+            <img decoding="async" width="1600" height="1000"
+              src="img/t-vastra-landing-page-bold-type-fce2e660.webp"
+              alt="T Vastra landing page: bold type and a maroon tee on a black background with the logo emblem behind it" loading="lazy" />
+          </figure>
+
+          <div class="beats">
+            <div class="beat reveal">
+              <div class="beat__no">壱<small>The brief</small></div>
+              <div>
+                <h3 class="beat__title">Black and premium, without looking like a template</h3>
+                <div class="beat__body">
+                  <p>
+                    The ask was a black, premium store with good fonts and
+                    micro-animations on the shopping cards, built on placeholder
+                    data so the real catalogue could drop in later.
+                  </p>
+                  <p>
+                    One constraint shaped everything:
+                    <strong>the client didn't like their own logo's colours</strong>,
+                    so the palette couldn't come from it. I built it from the
+                    product instead: near-black, a warm bone white, and a single
+                    red taken from the thread already in their spider designs.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="beat reveal">
+              <div class="beat__no">弐<small>The signature</small></div>
+              <div>
+                <h3 class="beat__title">Picking a colour shouldn't be a swap. It should spread.</h3>
+                <div class="beat__body">
+                  <p>
+                    Most stores just replace the photo when you pick a colour. I
+                    wanted the change itself to feel like the brand, so I
+                    designed what I called the
+                    <span class="hl">venom effect</span>: a black, tendril-edged
+                    layer bleeds out across the shirt, the new colour chases it,
+                    and the embroidery re-threads itself halfway through.
+                  </p>
+                  <p>
+                    That decided how it was built. Photos can't do this, so
+                    <strong>every tee is drawn as live SVG</strong>: the colour
+                    is its own layer and the tendrils come from a
+                    noise-distorted mask. Twelve designs, sixteen colourways, one
+                    renderer. Anyone who has reduced motion turned on gets an
+                    instant swap instead.
+                  </p>
+                </div>
+                <figure class="frames">
+                  <img decoding="async" width="1600" height="408"
+                    src="img/five-frames-of-the-venom-transition-987e7dc2.webp"
+                    alt="Five frames of the venom transition: a white tee is covered by spreading black tendrils, then maroon replaces the black and the thread turns light" loading="lazy" />
+                  <figcaption><b>White → maroon</b> frozen at five points of the 1.4-second transition</figcaption>
+                </figure>
+              </div>
+            </div>
+
+            <div class="beat reveal">
+              <div class="beat__no">参<small>The card</small></div>
+              <div>
+                <h3 class="beat__title">Every tap answers back</h3>
+                <div class="beat__body">
+                  <p>
+                    The product card is where people decide, so every action has
+                    its own feedback. The colour name slides to the new one,
+                    Front / Back flips the shirt in 3D, and Add to bag runs a
+                    spinner into a hand-drawn check while a dot in the shirt's
+                    colour flies into the bag and the bag icon bounces. The heart
+                    bursts when you save a tee.
+                  </p>
+                  <p>
+                    The error state is designed too. Tap Add without a size and
+                    the sizes shake while
+                    <strong>the button itself turns red and says "Pick a size first"</strong>.
+                    That version exists because the first one, a floating label,
+                    overlapped the colour swatches. I caught it while taking
+                    these screenshots and fixed it before publishing.
+                  </p>
+                </div>
+                <div class="duo">
+                  <figure>
+                    <img decoding="async" width="634" height="1096" src="img/product-card-in-maroon-with-size-4802cdf8.webp"
+                      alt="Product card in maroon with size L selected, the heart filled and the button showing Added" loading="lazy" />
+                    <figcaption><b>Picked, saved, added</b> every step shows its state</figcaption>
+                  </figure>
+                  <figure>
+                    <img decoding="async" width="634" height="1096" src="img/product-card-flipped-to-show-the-adb9a2a6.webp"
+                      alt="Product card flipped to show the back embroidery" loading="lazy" />
+                    <figcaption><b>Front / Back</b> a 3D flip that can change direction mid-turn</figcaption>
+                  </figure>
+                </div>
+                <figure class="solo">
+                  <img decoding="async" width="654" height="474" src="img/add-to-bag-button-in-red-d598ef7d.webp"
+                    alt="Add to bag button in red outline reading Pick a size first" loading="lazy" />
+                  <figcaption><b>The error lives in the button</b> it shakes the sizes, then resets on its own</figcaption>
+                </figure>
+              </div>
+            </div>
+
+            <div class="beat reveal">
+              <div class="beat__no">四<small>The iteration</small></div>
+              <div>
+                <h3 class="beat__title">The direction I tried, and walked back</h3>
+                <div class="beat__body">
+                  <p>
+                    After the first build I judged parts of it generic, with too
+                    many familiar moves. So I explored a quieter, logo-led
+                    direction: a Roman serif matched to the wordmark, square
+                    corners, no intro, a centred hero.
+                  </p>
+                  <p>
+                    Side by side,
+                    <strong>the bold original sold the product better</strong>;
+                    the quiet version made the tees feel smaller. I rolled it
+                    back but kept what the second pass got right: the client's
+                    logo, cut cleanly out of the flat JPG they sent, now in the
+                    nav, the intro and the footer and stitched onto a tee in
+                    thread colour, plus the emblem as a faint backdrop behind the
+                    hero shirt.
+                  </p>
+                </div>
+                <div class="duo">
+                  <figure>
+                    <img decoding="async" width="1440" height="900" src="img/explored-direction-centred-navy-tee-under-269aedb0.webp" alt="Explored direction: centred navy tee under a spaced Roman-serif headline" loading="lazy" />
+                    <figcaption><b>Explored</b> editorial and logo-led, but too quiet</figcaption>
+                  </figure>
+                  <figure>
+                    <img decoding="async" width="1600" height="1000" src="img/t-vastra-landing-page-bold-type-fce2e660.webp" alt="Shipped direction: bold headline beside the tee" loading="lazy" />
+                    <figcaption><b>Shipped</b> bold type, with the logo emblem kept as the backdrop</figcaption>
+                  </figure>
+                </div>
+                <div class="duo">
+                  <figure>
+                    <img decoding="async" width="900" height="872" src="img/the-client-s-logo-as-supplied-a7d12516.webp" alt="The client's logo as supplied, on a flat black JPG" loading="lazy" />
+                    <figcaption><b>As supplied</b> logo baked onto a black JPG</figcaption>
+                  </figure>
+                  <figure>
+                    <img decoding="async" width="900" height="872" src="img/the-logo-cut-out-to-a-08744613.webp" alt="The logo cut out to a transparent PNG, shown on a checkerboard" loading="lazy" />
+                    <figcaption><b>Cut out</b> transparent, keeping the silver shading</figcaption>
+                  </figure>
+                </div>
+              </div>
+            </div>
+
+            <div class="beat reveal">
+              <div class="beat__no">五<small>The handover</small></div>
+              <div>
+                <h3 class="beat__title">A store, not a mockup</h3>
+                <div class="beat__body">
+                  <p>
+                    It works end to end: the bag survives a page reload,
+                    quantities update with a running subtotal, and a bar fills
+                    toward free shipping. Before handing it over I put the code
+                    through an <strong>independent review by a second AI system
+                    (OpenAI Codex)</strong> and scripted real-browser tests. The
+                    first review found four issues and the second found four
+                    more. All eight are fixed and the final review came back
+                    clean.
+                  </p>
+                  <p>
+                    Honesty was part of QA too. The placeholder reviews are
+                    labelled as samples, and product specs I couldn't verify
+                    are flagged for the client to confirm before launch.
+                    <span class="hl">A demo that pretends to be real is a liability, not a deliverable.</span>
+                  </p>
+                </div>
+                <div class="fixes">
+                  <div class="fixes__h">Review — eight bugs caught before the client saw them</div>
+                  <p class="fixes__sub">Found by Codex across two review rounds, fixed, then re-checked in a scripted Chrome session.</p>
+                  <ol>
+                    <li><b>Front/Back flip:</b> a second tap mid-animation was ignored. It now retargets.</li>
+                    <li><b>Flip retarget:</b> the shirt snapped flat before turning. It now turns from its current angle.</li>
+                    <li><b>Bag drawer:</b> keyboard focus could leave it. It is now a modal dialog and the page behind is inert.</li>
+                    <li><b>Toast button:</b> "View bag" stayed reachable behind the open drawer. It is removed while the bag is open.</li>
+                    <li><b>Closing the bag:</b> focus went back to a button that had disappeared. It now returns to the bag icon.</li>
+                    <li><b>Fast open/close:</b> a timer could focus the hidden Close button. The timer is cleared on close.</li>
+                    <li><b>Saved data:</b> a corrupted bag in browser storage could crash the store on load. Every item is now validated.</li>
+                    <li><b>Duplicate items:</b> two identical saved items became two linked rows. They now merge into one line.</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="outcome reveal">
+            <div><b>1 signature</b><span>interaction: the venom colour shift, built around live SVG tees</span></div>
+            <div><b>12 × 16</b><span>products and colourways, with no product photos needed</span></div>
+            <div><b>8 bugs</b><span>caught by an independent AI review and fixed before handover</span></div>
+          </div>
+
+          <div class="gallery">
+            <span class="gallery__h reveal">Selected screens</span>
+            <figure class="scene scene--dark reveal">
+              <img decoding="async" width="1600" height="1000" src="img/collection-grid-with-four-tees-in-af0e29e4.webp" alt="Collection grid with four tees in different colours" loading="lazy" />
+              <figcaption class="scene__cap"><b>The collection</b><span>Every card can change colour, side and size in place</span></figcaption>
+            </figure>
+            <div class="gallery__row">
+              <figure class="scene scene--dark reveal">
+                <img decoding="async" width="1600" height="1000" src="img/bag-drawer-with-three-items-and-90ffb499.webp" alt="Bag drawer with three items and the free-shipping bar full" loading="lazy" />
+                <figcaption class="scene__cap"><b>The bag</b><span>Persistent, with a free-shipping meter</span></figcaption>
+              </figure>
+              <figure class="scene scene--dark reveal">
+                <img decoding="async" width="1400" height="875" src="img/embroidery-close-up-section-c4d7ff40.webp" alt="Embroidery close-up section" loading="lazy" />
+                <figcaption class="scene__cap"><b>The craft</b><span>An embroidery close-up drawn in thread texture</span></figcaption>
+              </figure>
+            </div>
+            <figure class="scene scene--dark reveal">
+              <div class="stage stage--dark">
+                <div class="phone phone--l"><img decoding="async" width="560" height="1212" src="img/t-vastra-on-mobile-hero-with-647d9a18.webp" alt="Mobile hero" loading="lazy" /></div>
+                <div class="phone phone--c"><img decoding="async" width="560" height="1212" src="img/t-vastra-on-mobile-product-card-7355c27f.webp" alt="Mobile product card" loading="lazy" /></div>
+                <div class="phone phone--r"><img decoding="async" width="560" height="1212" src="img/t-vastra-on-mobile-the-bag-7c41dd23.webp" alt="Mobile bag" loading="lazy" /></div>
+              </div>
+              <figcaption class="scene__cap"><b>Mobile</b><span>The same interactions, laid out for one thumb</span></figcaption>
+            </figure>
+            <figure class="scene scene--dark reveal">
+              <img decoding="async" width="1400" height="875" src="img/brand-story-section-with-the-line-10c7e2c8.webp" alt="Brand story section with the line Nothing is original, steal like an artist" loading="lazy" />
+              <figcaption class="scene__cap"><b>The story</b><span>The brand line, taken from their own design</span></figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ CASE STUDY — TONE ZONE ============================ -->
+    <section class="section section--panel" id="case-tonezone">
+      <div class="wrap">
+        <div class="cs">
+          <div class="reveal">
+            <span class="chip">Client project · gym management app</span>
+            <span class="chip">Member + owner apps · one Flutter codebase</span>
+          </div>
+          <h2 class="section__title reveal" style="margin-top: 14px">
+            One QR at the door.<br />The whole gym on <em class="brush">one phone.</em>
+          </h2>
+          <p class="cs__lead reveal">
+            Tone Zone Fitness, a gym, needed two things from one app: members who can
+            get in and pay without queueing at the desk, and an owner who can
+            see <b>who's inside, who's paid and who's waiting for approval</b>
+            without a notebook. I designed the dark Tone Zone design system and
+            every screen on both sides, then built it in Flutter with AI as the
+            brush.
+          </p>
+          <div class="cs__links reveal">
+            <a class="btn" href="#contact">Let’s connect →</a>
+            <span class="cs__video-note">Screens are from the working Flutter build, running on demo data.</span>
+          </div>
+
+          <div class="beats">
+            <div class="beat reveal">
+              <div class="beat__no">壱<small>The brief</small></div>
+              <div>
+                <h3 class="beat__title">A gym app that costs nothing to run</h3>
+                <div class="beat__body">
+                  <p>
+                    The gym's flowchart split into two people: a member who
+                    needs a pass and a way to pay, and an owner who needs to
+                    check people in, approve new members and chase unpaid fees.
+                  </p>
+                  <p>
+                    I made <strong>₹0 running fees</strong> a design rule, not an
+                    afterthought. Login is email and Google, so there are no SMS
+                    costs or DLT registration. Payment is direct UPI to the gym's
+                    own QR, so there are no gateway fees. Cash payers aren't
+                    forgotten either: the owner can mark them paid in one tap.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="beat reveal">
+              <div class="beat__no">弐<small>The pass</small></div>
+              <div>
+                <h3 class="beat__title">The door check takes one glance</h3>
+                <div class="beat__body">
+                  <p>
+                    Each member gets a <strong>signed QR pass that rotates every
+                    30 days</strong>. When the owner scans it, a card slides up
+                    with the member's name, ID, payment status, validity and
+                    last visit, topped by one big answer:
+                    <strong>Allow entry</strong> or not.
+                  </p>
+                  <p>
+                    A pass can be screenshotted, so the card is built for the
+                    owner to check the person against the name rather than
+                    pretending the QR alone is proof, with a slot for a member
+                    photo. The QR carries no personal data, just a reference
+                    the server signs.
+                  </p>
+                </div>
+                <div class="duo">
+                  <figure>
+                    <img decoding="async" width="560" height="1212" src="img/tone-zone-membership-pass.webp"
+                      alt="Member's membership pass with name, member ID, PAID badge, QR code and validity dates" loading="lazy" />
+                    <figcaption><b>The member's pass</b> paid status, validity and the next rotation date</figcaption>
+                  </figure>
+                  <figure>
+                    <img decoding="async" width="560" height="1212" src="img/tone-zone-check-in-card.webp"
+                      alt="Owner's check-in card after a scan: Allow entry, paid this month, valid until and last entry" loading="lazy" />
+                    <figcaption><b>The owner's scan</b> one big answer, with the reasons underneath</figcaption>
+                  </figure>
+                </div>
+              </div>
+            </div>
+
+            <div class="beat reveal">
+              <div class="beat__no">参<small>The owner</small></div>
+              <div>
+                <h3 class="beat__title">A hidden back office in the same app</h3>
+                <div class="beat__body">
+                  <p>
+                    There is no "admin" button for members to find. The owner's
+                    tools only appear when the owner logs in: approve or reject
+                    sign-ups, freeze a membership, record a cash payment, or let
+                    someone in on a trial with an override.
+                  </p>
+                  <p>
+                    The dashboard answers the questions an owner actually asks
+                    at the end of the month: <strong>how much came in, how many
+                    have paid, and exactly who hasn't</strong>.
+                  </p>
+                </div>
+                <div class="duo">
+                  <figure>
+                    <img decoding="async" width="560" height="1212" src="img/tone-zone-members-admin.webp"
+                      alt="Owner's members screen with a pending approval and member cards with Freeze, Cash paid and Override actions" loading="lazy" />
+                    <figcaption><b>Members</b> approvals first, then one-tap actions per member</figcaption>
+                  </figure>
+                  <figure>
+                    <img decoding="async" width="560" height="1212" src="img/tone-zone-owner-dashboard.webp"
+                      alt="Owner's dashboard with this month's revenue, paid members, total members, pending approvals and an unpaid list" loading="lazy" />
+                    <figcaption><b>Dashboard</b> the month's money and the unpaid list</figcaption>
+                  </figure>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="outcome reveal">
+            <div><b>2 apps</b><span>in one: a member side and a hidden owner side, from one Flutter codebase</span></div>
+            <div><b>₹0</b><span>per login and per payment, by design: email and Google sign-in, direct UPI</span></div>
+            <div><b>30 days</b><span>per signed QR pass, checked against the member at the door</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ WHY HIRE ME ============================ -->
+    <section class="section" id="hire">
+      <div class="wrap">
+        <div class="section__head reveal">
+          <div class="section__no">
+            <span class="kanji" aria-hidden="true">二</span>
+            <h2 class="section__title">What I bring<br />to your team</h2>
+          </div>
+          <p class="section__note">
+            Three years as the only designer on paying client projects: I've
+            owned every stage, kept to real deadlines and explained my
+            decisions to the people paying for them.
+          </p>
+        </div>
+
+        <div class="pitch">
+          <div class="card reveal">
+            <span class="kanji" aria-hidden="true">独</span>
+            <h3>End-to-end ownership</h3>
+            <p>
+              Research, user flows, hi-fi UI, design systems and developer
+              handoff. On <b>12 client projects</b> I owned every stage, so
+              I'm used to making design decisions and defending them, not
+              waiting for a spec.
+            </p>
+          </div>
+          <div class="card reveal d1">
+            <span class="kanji" aria-hidden="true">約</span>
+            <h3>Reliable on deadlines</h3>
+            <p>
+              <b>Every client project shipped on time</b> against scopes and
+              dates agreed up front. I break work into milestones, share
+              progress early and flag risks before they become surprises.
+            </p>
+          </div>
+          <div class="card reveal">
+            <span class="kanji" aria-hidden="true">客</span>
+            <h3>Design that earns the second visit</h3>
+            <p>
+              I design around the return visit as much as the first: clear
+              journeys, saved state and account pages people actually use.
+              The same goes for my own work: <b>80% of my clients came back
+                or referred me.</b>
+            </p>
+          </div>
+          <div class="card reveal d1">
+            <span class="kanji" aria-hidden="true">技</span>
+            <h3>Easy to work with for engineers</h3>
+            <p>
+              A <b>B.Tech in AI &amp; Data Science</b> means I talk
+              constraints with developers, prototype in working code when it
+              helps, and hand off files a team can build without guessing.
+            </p>
+          </div>
+        </div>
+
+        <div class="outcome reveal">
+          <div><b>Immediate</b><span>availability: no notice period to serve</span></div>
+          <div><b>Relocation</b><span>open to moving for the right full-time role</span></div>
+          <div><b>3 years</b><span>working remotely with clients online, async and on calls</span></div>
+        </div>
+
+        <div class="why reveal">
+          <h3>Ready to relocate,<br />used to remote.</h3>
+          <div>
+            <p>
+              I've spent three years working with clients online: written
+              updates, recorded decisions, calls across schedules and
+              handoffs that don't need me in the room. I'm just as happy
+              joining a team on-site.
+            </p>
+            <p>
+              I'm an Indian citizen based in Hyderabad, <b>open to relocating
+                for a full-time role</b> and available to start immediately.
+              For roles outside India I'll need <b>employer visa
+                sponsorship</b>.
+            </p>
+            <p>
+              What I'm looking for: a UI/UX or product design role on a team
+              that ships, tests with real users and sweats the details.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ PROCESS ============================ -->
+    <section class="section section--panel" id="process">
+      <div class="wrap">
+        <div class="section__head reveal">
+          <div class="section__no">
+            <span class="kanji" aria-hidden="true">三</span>
+            <h2 class="section__title">The way I work <span class="kanji" style="font-size:0.6em"
+                aria-hidden="true">道</span></h2>
+          </div>
+        </div>
+        <div class="principles">
+          <div class="principle reveal">
+            <span class="n" aria-hidden="true">壱</span>
+            <h3>Pain before pixels</h3>
+            <p>
+              I don't design a screen until I can name the specific friction
+              it removes. If I can't, it doesn't earn its place in the build.
+            </p>
+          </div>
+          <div class="principle reveal d1">
+            <span class="n" aria-hidden="true">弐</span>
+            <h3>Test, then trust</h3>
+            <p>
+              My taste is a hypothesis, not a verdict. I put flows in front of
+              real users early and let what they do — not what they say —
+              settle the argument.
+            </p>
+          </div>
+          <div class="principle reveal d2">
+            <span class="n" aria-hidden="true">参</span>
+            <h3>Buildable by design</h3>
+            <p>
+              An engineering background means I think in constraints. I'd
+              rather ship a feasible v1 this sprint than a perfect v3 that
+              never leaves the file.
+            </p>
+          </div>
+          <div class="principle reveal d3">
+            <span class="n" aria-hidden="true">四</span>
+            <h3>Close to the build</h3>
+            <p>
+              I hand off annotated Figma files and specs, and when it helps I
+              prototype in working code with AI-assisted tools, so developers
+              can see exactly how an interaction should feel before they
+              build it.
+            </p>
+          </div>
+        </div>
+        <div class="toolkit reveal">
+          <span class="tag">Figma</span><span class="tag">Prototyping</span>
+          <span class="tag">User interviews</span><span class="tag">Usability testing</span>
+          <span class="tag">Design systems</span><span class="tag">Information architecture</span>
+          <span class="tag">Interaction design</span><span class="tag">AI-assisted prototyping</span>
+          <span class="tag">Wireframing</span><span class="tag">Client &amp; stakeholder management</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ ABOUT ============================ -->
+    <section class="section" id="about">
+      <div class="wrap">
+        <div class="section__head reveal">
+          <div class="section__no">
+            <span class="kanji" aria-hidden="true">四</span>
+            <h2 class="section__title">About</h2>
+          </div>
+        </div>
+        <div class="about">
+          <div class="about__media reveal">
+            <div class="about__photo">
+            <img decoding="async" width="800" height="1000"
+              src="img/portrait-of-syed-mudaseer-quadri-58c56167.webp"
+              alt="Portrait of Syed Mudaseer Quadri" loading="lazy" />
+            <span class="hanko" aria-hidden="true">修</span>
+            </div>
+            <figure class="about__cert">
+              <img decoding="async" width="820" height="608" src="img/framed-certificate-of-graduation-bachelor-of-31b02d56.webp"
+                alt="Framed Certificate of Graduation — Bachelor of Technology in Artificial Intelligence and Data Science, JNTUH"
+                loading="lazy" />
+              <figcaption>The paper behind the fact — B.Tech in AI &amp; Data Science, JNTUH ('26).</figcaption>
+            </figure>
+          </div>
+          <div class="reveal d1">
+            <h3>I design products people <em class="brush">keep using</em> — and I've been paid to do it since 2023.
+            </h3>
+            <p>
+              I'm a UI/UX and product designer looking for a full-time role.
+              I took my first paid project in 2023 and have freelanced
+              alongside my B.Tech ever since. For three years I've been the
+              only designer on every project, which means the whole job: research and user flows, hi-fi UI in
+              <b>Figma</b>, marketing creatives, and the design system that
+              keeps all of it consistent.
+            </p>
+            <p>
+              That range shipped twelve client projects — SaaS dashboards,
+              e-commerce flows, marketing sites — plus <b>Daily Recall</b>, my
+              own app, taken from nine user interviews through two iteration
+              cycles to a working, user-tested build, and <b>Tone Zone
+              Fitness</b>, a client's gym app designed and built for iOS and
+              Android.
+            </p>
+            <p>
+              My technical foundation is a B.Tech in Artificial Intelligence
+              &amp; Data Science. It isn't a costume — it's why I'm
+              comfortable in the messy middle where design meets what's
+              actually buildable, and why I design for how real users
+              browse: <b>on budget phones, on patchy connections, in a
+                hurry.</b>
+            </p>
+            <p>
+              What I'd bring to your team: <b>end-to-end ownership,
+                research-backed decisions and work that ships on time.</b>
+            </p>
+            <div class="facts">
+              <div class="fact"><span>Name</span><b>Syed Mudaseer Quadri</b></div>
+              <div class="fact"><span>Looking for</span><b>Full-time UI/UX or product design</b></div>
+              <div class="fact"><span>Location</span><b>Hyderabad, India · open to relocation</b></div>
+              <div class="fact"><span>Experience</span><b>3+ yrs freelance, alongside my degree</b></div>
+              <div class="fact"><span>Education</span><b>B.Tech — AI &amp; Data Science ('26)</b></div>
+              <div class="fact"><span>Tools</span><b>Figma · Framer · AI-assisted workflow</b></div>
+              <div class="fact"><span>Availability</span><b>Immediate</b></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="stroke-div" aria-hidden="true"></div>
+
+    <!-- ============================ CONTACT ============================ -->
+    <section class="section contact" id="contact">
+      <div class="wrap">
+        <span class="eyebrow reveal"><span class="kanji" aria-hidden="true">縁</span> Let's talk</span>
+        <h2 class="reveal">
+          Hiring a UI/UX designer?
+          <a href="mailto:syed.designuiux@gmail.com">Let's talk.</a>
+        </h2>
+        <p class="contact__sub reveal">
+          I reply within a day. Send me the role and a little about your
+          team, and I'll come back with whatever helps: my résumé, a live
+          walkthrough of a case study, or times for a call.
+        </p>
+
+        <div class="clientnote reveal">
+          <span class="kanji" aria-hidden="true">履</span>
+          <p>
+            <b>My résumé.</b> One page, with the 12 client projects, the three
+            case studies above, my B.Tech and certifications, including the
+            Google UX Design Professional Certificate.
+            <a href="Syed-Mudaseer-Quadri-UIUX-Resume.pdf" target="_blank" rel="noopener">Download the PDF</a>.
+          </p>
+        </div>
+
+        <form class="lwt reveal" id="lwt" action="https://script.google.com/macros/s/AKfycbzmutHgMw-yWAKJfQSJ2EUodL3XuTa9pqbA5zowTGGQaEWkUXQ10jNefGQaiMdDlec/exec" method="POST">
+          <div class="lwt__head">
+            <h3>Get in touch</h3>
+            <p>Three quick fields. I read every message myself and reply within 24 hours.</p>
+          </div>
+          <input type="text" name="_honey" class="lwt__trap" tabindex="-1" autocomplete="off" aria-hidden="true" />
+          <div class="lwt__row">
+            <label class="lwt__field">
+              <span>Your name</span>
+              <input type="text" name="name" required autocomplete="name" placeholder="Your full name" />
+            </label>
+            <label class="lwt__field">
+              <span>Your email</span>
+              <input type="email" name="email" required autocomplete="email" placeholder="you@company.com" />
+            </label>
+          </div>
+          <label class="lwt__field">
+            <span>Your message</span>
+            <textarea name="message" required rows="5"
+              placeholder="The role, your team and how to reach you"></textarea>
+          </label>
+          <div class="lwt__foot">
+            <button class="btn" type="submit">Send message →</button>
+            <p class="lwt__status" role="status" aria-live="polite"></p>
+          </div>
+        </form>
+
+        <div class="socials reveal">
+          <a class="social" href="mailto:syed.designuiux@gmail.com">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M2 4h20a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zm10 8.4 9-6.15V6L12 12 3 6v.25l9 6.15z" />
+            </svg>
+            Email</a>
+          <a class="social" href="https://www.linkedin.com/in/syed-mudaseer/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z" />
+            </svg>
+            LinkedIn</a>
+          <a class="social" href="Syed-Mudaseer-Quadri-UIUX-Resume.pdf" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6 2h8l6 6v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1zm7 1.5V9h5.5L13 3.5zM8 13h8v1.6H8V13zm0 3.4h8V18H8v-1.6z" />
+            </svg>
+            Résumé (PDF)</a>
+        </div>
+        <div class="foot">
+          <span>© <span id="yr">2026</span> Syed Mudaseer Quadri — designed &amp; built by me</span>
+          <span>Hyderabad · open to relocation · 墨 sumi on washi</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    /* =========================================================
+       SUMINAGASHI — Stable Fluids ink marbling (Three.js r128)
+       ========================================================= */
+    (function () {
+      const canvas = document.getElementById("sumi");
+      const hero = document.getElementById("hero");
+      const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const mobile = window.matchMedia(
+        "(max-width: 768px), (hover: none) and (pointer: coarse)"
+      ).matches;
+
+      function fallback() {
+        hero.classList.add("static");
+      }
+
+      if (reduced || mobile) return fallback();
+
+      // three.js is only needed for this desktop effect, so fetch it after first paint
+      const lib = document.createElement("script");
+      lib.src = "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js";
+      lib.onload = start;
+      lib.onerror = fallback;
+      document.head.appendChild(lib);
+
+      function start() {
+        if (!window.THREE) return fallback();
+
+        let renderer;
+        try {
+          renderer = new THREE.WebGLRenderer({
+            canvas: canvas,
+            alpha: false,
+            antialias: false,
+            depth: false,
+            stencil: false,
+            powerPreference: "high-performance",
+          });
+        } catch (e) {
+          return fallback();
+        }
+        if (!renderer.getContext()) return fallback();
+
+        const DPR = Math.min(window.devicePixelRatio || 1, 1.5);
+        renderer.setPixelRatio(1); // we manage resolution manually
+
+        const scene = new THREE.Scene();
+        const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+        const quad = new THREE.Mesh(new THREE.PlaneBufferGeometry(2, 2), null);
+        scene.add(quad);
+
+        /* ---------- shaders ---------- */
+        const baseVert = `
+            varying vec2 vUv; varying vec2 vL; varying vec2 vR; varying vec2 vT; varying vec2 vB;
+            uniform vec2 texelSize;
+            void main () {
+              vUv = uv;
+              vL = vUv - vec2(texelSize.x, 0.0);
+              vR = vUv + vec2(texelSize.x, 0.0);
+              vT = vUv + vec2(0.0, texelSize.y);
+              vB = vUv - vec2(0.0, texelSize.y);
+              gl_Position = vec4(position.xy, 0.0, 1.0);
+            }`;
+
+        const advectionFrag = `
+            precision highp float; precision highp sampler2D;
+            varying vec2 vUv;
+            uniform sampler2D uVelocity; uniform sampler2D uSource;
+            uniform vec2 texelSize; uniform float dt; uniform float dissipation;
+            void main () {
+              vec2 coord = vUv - dt * texture2D(uVelocity, vUv).xy * texelSize;
+              gl_FragColor = dissipation * texture2D(uSource, coord);
+              gl_FragColor.a = 1.0;
+            }`;
+
+        const splatFrag = `
+            precision highp float; precision highp sampler2D;
+            varying vec2 vUv;
+            uniform sampler2D uTarget; uniform float aspectRatio;
+            uniform vec3 color; uniform vec2 point;
+            uniform float radius; uniform float ring;
+            void main () {
+              vec2 p = vUv - point.xy;
+              p.x *= aspectRatio;
+              float d = length(p) - ring;
+              vec3 splat = exp(-d * d / radius) * color;
+              vec3 base = texture2D(uTarget, vUv).xyz;
+              gl_FragColor = vec4(base + splat, 1.0);
+            }`;
+
+        const curlFrag = `
+            precision mediump float; precision mediump sampler2D;
+            varying vec2 vUv; varying vec2 vL; varying vec2 vR; varying vec2 vT; varying vec2 vB;
+            uniform sampler2D uVelocity;
+            void main () {
+              float L = texture2D(uVelocity, vL).y;
+              float R = texture2D(uVelocity, vR).y;
+              float T = texture2D(uVelocity, vT).x;
+              float B = texture2D(uVelocity, vB).x;
+              float vorticity = R - L - T + B;
+              gl_FragColor = vec4(0.5 * vorticity, 0.0, 0.0, 1.0);
+            }`;
+
+        const vorticityFrag = `
+            precision highp float; precision highp sampler2D;
+            varying vec2 vUv; varying vec2 vL; varying vec2 vR; varying vec2 vT; varying vec2 vB;
+            uniform sampler2D uVelocity; uniform sampler2D uCurl;
+            uniform float curl; uniform float dt;
+            void main () {
+              float L = texture2D(uCurl, vL).x;
+              float R = texture2D(uCurl, vR).x;
+              float T = texture2D(uCurl, vT).x;
+              float B = texture2D(uCurl, vB).x;
+              float C = texture2D(uCurl, vUv).x;
+              vec2 force = 0.5 * vec2(abs(T) - abs(B), abs(R) - abs(L));
+              force /= length(force) + 0.0001;
+              force *= curl * C;
+              force.y *= -1.0;
+              vec2 vel = texture2D(uVelocity, vUv).xy;
+              gl_FragColor = vec4(vel + force * dt, 0.0, 1.0);
+            }`;
+
+        const divergenceFrag = `
+            precision mediump float; precision mediump sampler2D;
+            varying vec2 vUv; varying vec2 vL; varying vec2 vR; varying vec2 vT; varying vec2 vB;
+            uniform sampler2D uVelocity;
+            void main () {
+              float L = texture2D(uVelocity, vL).x;
+              float R = texture2D(uVelocity, vR).x;
+              float T = texture2D(uVelocity, vT).y;
+              float B = texture2D(uVelocity, vB).y;
+              vec2 C = texture2D(uVelocity, vUv).xy;
+              if (vL.x < 0.0) { L = -C.x; }
+              if (vR.x > 1.0) { R = -C.x; }
+              if (vT.y > 1.0) { T = -C.y; }
+              if (vB.y < 0.0) { B = -C.y; }
+              gl_FragColor = vec4(0.5 * (R - L + T - B), 0.0, 0.0, 1.0);
+            }`;
+
+        const clearFrag = `
+            precision mediump float; precision mediump sampler2D;
+            varying vec2 vUv;
+            uniform sampler2D uTexture; uniform float value;
+            void main () {
+              gl_FragColor = value * texture2D(uTexture, vUv);
+            }`;
+
+        const pressureFrag = `
+            precision mediump float; precision mediump sampler2D;
+            varying vec2 vUv; varying vec2 vL; varying vec2 vR; varying vec2 vT; varying vec2 vB;
+            uniform sampler2D uPressure; uniform sampler2D uDivergence;
+            void main () {
+              float L = texture2D(uPressure, vL).x;
+              float R = texture2D(uPressure, vR).x;
+              float T = texture2D(uPressure, vT).x;
+              float B = texture2D(uPressure, vB).x;
+              float divergence = texture2D(uDivergence, vUv).x;
+              float pressure = (L + R + B + T - divergence) * 0.25;
+              gl_FragColor = vec4(pressure, 0.0, 0.0, 1.0);
+            }`;
+
+        const gradientSubtractFrag = `
+            precision mediump float; precision mediump sampler2D;
+            varying vec2 vUv; varying vec2 vL; varying vec2 vR; varying vec2 vT; varying vec2 vB;
+            uniform sampler2D uPressure; uniform sampler2D uVelocity;
+            void main () {
+              float L = texture2D(uPressure, vL).x;
+              float R = texture2D(uPressure, vR).x;
+              float T = texture2D(uPressure, vT).x;
+              float B = texture2D(uPressure, vB).x;
+              vec2 velocity = texture2D(uVelocity, vUv).xy;
+              velocity.xy -= vec2(R - L, T - B);
+              gl_FragColor = vec4(velocity, 0.0, 1.0);
+            }`;
+
+        const displayFrag = `
+            precision highp float; precision highp sampler2D;
+            varying vec2 vUv;
+            uniform sampler2D uDye;
+            void main () {
+              float d = texture2D(uDye, vUv).x;
+              d = clamp(d, 0.0, 1.0);
+              d = pow(d, 0.85);
+              vec3 paper = vec3(0.984, 0.980, 0.965);
+              vec3 inkCol = mix(vec3(0.33, 0.34, 0.36), vec3(0.19, 0.19, 0.21), d);
+              vec3 col = mix(paper, inkCol, d);
+              gl_FragColor = vec4(col, 1.0);
+            }`;
+
+        function makeMaterial(frag) {
+          return new THREE.ShaderMaterial({
+            vertexShader: baseVert,
+            fragmentShader: frag,
+            uniforms: {
+              texelSize: { value: new THREE.Vector2() },
+              uVelocity: { value: null },
+              uSource: { value: null },
+              uTarget: { value: null },
+              uPressure: { value: null },
+              uDivergence: { value: null },
+              uCurl: { value: null },
+              uTexture: { value: null },
+              uDye: { value: null },
+              dt: { value: 0.0 },
+              dissipation: { value: 1.0 },
+              aspectRatio: { value: 1.0 },
+              color: { value: new THREE.Vector3() },
+              point: { value: new THREE.Vector2() },
+              radius: { value: 0.001 },
+              ring: { value: 0.0 },
+              curl: { value: 12.0 },
+              value: { value: 0.8 },
+            },
+            depthTest: false,
+            depthWrite: false,
+          });
+        }
+
+        const mAdvect = makeMaterial(advectionFrag);
+        const mSplat = makeMaterial(splatFrag);
+        const mCurl = makeMaterial(curlFrag);
+        const mVort = makeMaterial(vorticityFrag);
+        const mDiv = makeMaterial(divergenceFrag);
+        const mClear = makeMaterial(clearFrag);
+        const mPress = makeMaterial(pressureFrag);
+        const mGrad = makeMaterial(gradientSubtractFrag);
+        const mShow = makeMaterial(displayFrag);
+
+        /* ---------- render targets ---------- */
+        const SIM_RES = 144;
+        const DYE_RES = Math.min(1024, Math.max(512, Math.floor(window.innerWidth * 0.6)));
+
+        function rt(w, h) {
+          return new THREE.WebGLRenderTarget(w, h, {
+            wrapS: THREE.ClampToEdgeWrapping,
+            wrapT: THREE.ClampToEdgeWrapping,
+            minFilter: THREE.LinearFilter,
+            magFilter: THREE.LinearFilter,
+            format: THREE.RGBAFormat,
+            type: THREE.HalfFloatType,
+            depthBuffer: false,
+            stencilBuffer: false,
+          });
+        }
+        function doubleRt(w, h) {
+          return { read: rt(w, h), write: rt(w, h), swap() { const t = this.read; this.read = this.write; this.write = t; } };
+        }
+
+        let simW, simH, dyeW, dyeH;
+        let velocity, dye, pressure, divergence, curlRT;
+
+        function sizeFor(res) {
+          const aspect = canvas.clientWidth / Math.max(1, canvas.clientHeight);
+          return aspect >= 1
+            ? [Math.round(res * aspect), res]
+            : [res, Math.round(res / Math.max(0.0001, aspect))];
+        }
+
+        function allocate() {
+          [simW, simH] = sizeFor(SIM_RES);
+          [dyeW, dyeH] = sizeFor(DYE_RES);
+          if (velocity) {
+            [velocity.read, velocity.write, dye.read, dye.write,
+            pressure.read, pressure.write, divergence, curlRT].forEach(t => t.dispose());
+          }
+          velocity = doubleRt(simW, simH);
+          dye = doubleRt(dyeW, dyeH);
+          pressure = doubleRt(simW, simH);
+          divergence = rt(simW, simH);
+          curlRT = rt(simW, simH);
+        }
+
+        function resize() {
+          const w = Math.floor(canvas.clientWidth * DPR);
+          const h = Math.floor(canvas.clientHeight * DPR);
+          if (!w || !h) return; /* canvas hidden (e.g. coarse-pointer media rule) */
+          if (canvas.width !== w || canvas.height !== h) {
+            renderer.setSize(w, h, false);
+            allocate();
+            seed();
+          }
+        }
+
+        function blit(target, material) {
+          quad.material = material;
+          renderer.setRenderTarget(target);
+          renderer.render(scene, camera);
+        }
+
+        /* ---------- splats ---------- */
+        function splat(fbo, w, h, x, y, r, g, b, radius, ring) {
+          mSplat.uniforms.texelSize.value.set(1 / w, 1 / h);
+          mSplat.uniforms.uTarget.value = fbo.read.texture;
+          mSplat.uniforms.aspectRatio.value = canvas.clientWidth / Math.max(1, canvas.clientHeight);
+          mSplat.uniforms.point.value.set(x, y);
+          mSplat.uniforms.color.value.set(r, g, b);
+          mSplat.uniforms.radius.value = radius;
+          mSplat.uniforms.ring.value = ring || 0.0;
+          blit(fbo.write, mSplat);
+          fbo.swap();
+        }
+
+        function stir(x, y, dx, dy) {
+          splat(velocity, simW, simH, x, y, dx, dy, 0, 0.0022, 0);
+          splat(dye, dyeW, dyeH, x, y, 0.045, 0.045, 0.045, 0.0016, 0);
+        }
+
+        /* classic suminagashi: concentric alternating rings */
+        function dropRings(x, y, scale) {
+          const s = scale || 1;
+          const rings = 5 + Math.floor(Math.random() * 2);
+          for (let i = 0; i < rings; i++) {
+            const rad = (0.018 + i * 0.03) * s;
+            const inkOn = i % 2 === 0;
+            const amt = inkOn ? 0.75 - i * 0.07 : -(0.85 - i * 0.06);
+            splat(dye, dyeW, dyeH, x, y, amt, amt, amt, 0.00006 * s, rad);
+          }
+          /* slight outward push so rings breathe */
+          const n = 7;
+          for (let i = 0; i < n; i++) {
+            const a = (i / n) * Math.PI * 2;
+            splat(velocity, simW, simH,
+              x + Math.cos(a) * 0.04 * s, y + Math.sin(a) * 0.04 * s,
+              Math.cos(a) * 28 * s, Math.sin(a) * 28 * s, 0, 0.003, 0);
+          }
+        }
+
+        function seed() {
+          dropRings(0.68, 0.62, 1.25);
+          dropRings(0.3, 0.28, 0.8);
+          dropRings(0.82, 0.2, 0.55);
+        }
+
+        /* ---------- pointer ---------- */
+        let lastX = null, lastY = null, lastInteract = performance.now();
+        function toUv(e) {
+          const rect = canvas.getBoundingClientRect();
+          return [
+            (e.clientX - rect.left) / rect.width,
+            1 - (e.clientY - rect.top) / rect.height,
+          ];
+        }
+        window.addEventListener("pointermove", (e) => {
+          const rect = canvas.getBoundingClientRect();
+          if (e.clientY < rect.top || e.clientY > rect.bottom) return;
+          const [x, y] = toUv(e);
+          if (lastX !== null) {
+            const dx = (x - lastX) * 900;
+            const dy = (y - lastY) * 900;
+            if (Math.abs(dx) + Math.abs(dy) > 0.4) stir(x, y, dx, dy);
+          }
+          lastX = x; lastY = y;
+          lastInteract = performance.now();
+        }, { passive: true });
+        window.addEventListener("pointerleave", () => { lastX = lastY = null; });
+
+        canvas.addEventListener("pointerdown", (e) => {
+          const [x, y] = toUv(e);
+          dropRings(x, y, 0.85 + Math.random() * 0.5);
+          lastInteract = performance.now();
+        });
+
+        /* ---------- sim step ---------- */
+        function step(dt) {
+          const simTexel = [1 / simW, 1 / simH];
+
+          mCurl.uniforms.texelSize.value.set(simTexel[0], simTexel[1]);
+          mCurl.uniforms.uVelocity.value = velocity.read.texture;
+          blit(curlRT, mCurl);
+
+          mVort.uniforms.texelSize.value.set(simTexel[0], simTexel[1]);
+          mVort.uniforms.uVelocity.value = velocity.read.texture;
+          mVort.uniforms.uCurl.value = curlRT.texture;
+          mVort.uniforms.curl.value = 14;
+          mVort.uniforms.dt.value = dt;
+          blit(velocity.write, mVort);
+          velocity.swap();
+
+          mDiv.uniforms.texelSize.value.set(simTexel[0], simTexel[1]);
+          mDiv.uniforms.uVelocity.value = velocity.read.texture;
+          blit(divergence, mDiv);
+
+          mClear.uniforms.texelSize.value.set(simTexel[0], simTexel[1]);
+          mClear.uniforms.uTexture.value = pressure.read.texture;
+          mClear.uniforms.value.value = 0.55;
+          blit(pressure.write, mClear);
+          pressure.swap();
+
+          mPress.uniforms.texelSize.value.set(simTexel[0], simTexel[1]);
+          mPress.uniforms.uDivergence.value = divergence.texture;
+          for (let i = 0; i < 20; i++) {
+            mPress.uniforms.uPressure.value = pressure.read.texture;
+            blit(pressure.write, mPress);
+            pressure.swap();
+          }
+
+          mGrad.uniforms.texelSize.value.set(simTexel[0], simTexel[1]);
+          mGrad.uniforms.uPressure.value = pressure.read.texture;
+          mGrad.uniforms.uVelocity.value = velocity.read.texture;
+          blit(velocity.write, mGrad);
+          velocity.swap();
+
+          mAdvect.uniforms.texelSize.value.set(simTexel[0], simTexel[1]);
+          mAdvect.uniforms.uVelocity.value = velocity.read.texture;
+          mAdvect.uniforms.uSource.value = velocity.read.texture;
+          mAdvect.uniforms.dt.value = dt;
+          mAdvect.uniforms.dissipation.value = 0.985;
+          blit(velocity.write, mAdvect);
+          velocity.swap();
+
+          mAdvect.uniforms.uVelocity.value = velocity.read.texture;
+          mAdvect.uniforms.uSource.value = dye.read.texture;
+          mAdvect.uniforms.dissipation.value = 0.999;
+          blit(dye.write, mAdvect);
+          dye.swap();
+        }
+
+        function render() {
+          mShow.uniforms.texelSize.value.set(1 / canvas.width, 1 / canvas.height);
+          mShow.uniforms.uDye.value = dye.read.texture;
+          blit(null, mShow);
+        }
+
+        /* ---------- loop / visibility ---------- */
+        let visible = true, pageVisible = true, last = performance.now();
+        const io = new IntersectionObserver((es) => {
+          es.forEach((e) => (visible = e.isIntersecting));
+        }, { threshold: 0.02 });
+        io.observe(hero);
+        document.addEventListener("visibilitychange", () => {
+          pageVisible = !document.hidden;
+          last = performance.now();
+        });
+
+        let nextAuto = performance.now() + 4200;
+        function loop(now) {
+          requestAnimationFrame(loop);
+          if (!visible || !pageVisible) { last = now; return; }
+          const dt = Math.min(0.0166, (now - last) / 1000);
+          last = now;
+          if (dt <= 0) return;
+
+          /* idle auto-drops keep the pool alive */
+          if (now > nextAuto) {
+            if (now - lastInteract > 3500) {
+              dropRings(0.15 + Math.random() * 0.7, 0.2 + Math.random() * 0.6, 0.45 + Math.random() * 0.6);
+            }
+            nextAuto = now + 3800 + Math.random() * 2600;
+          }
+
+          step(dt);
+          render();
+        }
+
+        try {
+          resize();
+          window.addEventListener("resize", resize);
+          requestAnimationFrame(loop);
+        } catch (e) {
+          fallback();
+        }
+      }
+    })();
+
+    /* =========================================================
+       NAV / REVEALS / YEAR
+       ========================================================= */
+    (function () {
+      const nav = document.getElementById("nav");
+      const onScroll = () => nav.classList.toggle("is-stuck", window.scrollY > 24);
+      onScroll();
+      window.addEventListener("scroll", onScroll, { passive: true });
+
+      // let's-work-together form: one click, sent in the background to my own Apps Script backend
+      const form = document.getElementById("lwt");
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const btn = form.querySelector("button");
+        const status = form.querySelector(".lwt__status");
+        const data = new FormData(form);
+        btn.disabled = true;
+        status.className = "lwt__status";
+        status.textContent = "Sending…";
+        try {
+          // text/plain keeps this a "simple" request, so there's no CORS preflight for Apps Script to answer
+          const res = await fetch(form.action, {
+            method: "POST",
+            headers: { "Content-Type": "text/plain;charset=utf-8" },
+            body: JSON.stringify({
+              name: data.get("name"),
+              email: data.get("email"),
+              message: data.get("message"),
+              _honey: data.get("_honey"),
+              page: location.href,
+            }),
+          });
+          const json = await res.json();
+          if (json.error === "too_soon") {
+            status.classList.add("is-ok");
+            status.textContent = "Got it already! Give me a moment before sending another.";
+            return;
+          }
+          if (json.error === "invalid_email") {
+            status.classList.add("is-err");
+            status.textContent = "That email address doesn’t look right. Please check it.";
+            return;
+          }
+          if (!json.ok) throw new Error(json.error || "failed");
+          form.reset();
+          status.classList.add("is-ok");
+          status.textContent = "Thanks! Your message is in. I’ll reply within 24 hours.";
+        } catch (err) {
+          // stay on the page: no redirect, just say what happened
+          status.classList.add("is-err");
+          status.textContent = "Sorry, that didn’t go through. Please try again in a minute, or email syed.designuiux@gmail.com.";
+        } finally {
+          btn.disabled = false;
+        }
+      });
+
+      // mobile hamburger sheet
+      const menu = document.getElementById("menu");
+      const openBtn = nav.querySelector(".nav__burger");
+      const setMenu = (open) => {
+        menu.classList.toggle("is-open", open);
+        document.body.classList.toggle("menu-open", open);
+        openBtn.setAttribute("aria-expanded", open);
+        (open ? menu.querySelector(".nav__burger") : openBtn).focus();
+      };
+      openBtn.addEventListener("click", () => setMenu(true));
+      menu.querySelector(".nav__burger").addEventListener("click", () => setMenu(false));
+      menu.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => setMenu(false)));
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && menu.classList.contains("is-open")) setMenu(false);
+      });
+
+      const io = new IntersectionObserver(
+        (entries) => entries.forEach((e) => {
+          if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+        }),
+        { threshold: 0.12, rootMargin: "0px 0px -6% 0px" }
+      );
+      document.querySelectorAll(".reveal:not(.in)").forEach((el) => io.observe(el));
+
+      document.getElementById("yr").textContent = new Date().getFullYear();
+
+      /* ---------- custom video player ---------- */
+      const frame = document.getElementById("pframe");
+      if (frame) {
+        const video = document.getElementById("pvideo");
+        const play = document.getElementById("pplay");
+        const mute = document.getElementById("pmute");
+        const track = document.getElementById("ptrack");
+        const fill = document.getElementById("pfill");
+        const time = document.getElementById("ptime");
+
+        const fmt = (s) => {
+          if (!isFinite(s)) return "0:00";
+          const m = Math.floor(s / 60), sec = Math.floor(s % 60);
+          return m + ":" + String(sec).padStart(2, "0");
+        };
+        const toggle = () => (video.paused ? video.play() : video.pause());
+
+        frame.addEventListener("click", (e) => {
+          if (e.target.closest(".player__bar")) return;
+          toggle();
+        });
+        play.addEventListener("click", toggle);
+        video.addEventListener("play", () => { frame.classList.add("is-playing"); play.textContent = "❚❚"; });
+        video.addEventListener("pause", () => { frame.classList.remove("is-playing"); play.textContent = "▶"; });
+        video.addEventListener("ended", () => { frame.classList.remove("is-playing"); play.textContent = "▶"; });
+        video.addEventListener("timeupdate", () => {
+          if (video.duration) fill.style.width = (video.currentTime / video.duration) * 100 + "%";
+          time.textContent = fmt(video.currentTime) + " / " + fmt(video.duration);
+        });
+        video.addEventListener("loadedmetadata", () => {
+          time.textContent = "0:00 / " + fmt(video.duration);
+        });
+        video.addEventListener("error", () => {
+          const wrap = document.getElementById("demo");
+          if (wrap) wrap.style.display = "none";
+        });
+        track.addEventListener("click", (e) => {
+          const r = track.getBoundingClientRect();
+          if (video.duration) video.currentTime = ((e.clientX - r.left) / r.width) * video.duration;
+        });
+        mute.addEventListener("click", () => {
+          video.muted = !video.muted;
+          mute.textContent = video.muted ? "🔇" : "🔊";
+        });
+      }
+    })();
+  </script>
+</body>
+
+</html>
